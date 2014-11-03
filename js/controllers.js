@@ -1,15 +1,30 @@
-var artistControllers = angular.module('artistControllers', ['ngAnimate']);
+var app = angular.module('artistControllers', ['ngAnimate']);
+
+/*
+ * Service that fetches JSON data from the REST API
+ * Return a promise object with success and fail properties
+ */
+app.factory('jsonData', function($http){
+  var data = null;
+  var promise = $http.jsonp('http://inf5750-21.uio.no/api/dataElements.jsonp?callback=JSON_CALLBACK')
+      .success(function(json){
+        data = json;
+      });
+  return {
+    promise: promise,
+    getData : function(){
+      return data;
+    }
+  }
+});
 
 //Controller attached to list.html view
-artistControllers.controller('ListController', ['$scope', '$http', function($scope, $http) {
-/*  $http.get('js/data.json').success(function(data) {
-    *//*$scope.artists = data;
-    $scope.artistOrder = 'name';*//*
-  });*/
+app.controller('ListController', ['$scope', '$http','jsonData', function($scope, $http, jsonData) {
+  $scope.data = jsonData.getData();
 }]);
 
 //Controller attached to details.html view
-artistControllers.controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
+app.controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
   $http.get('js/data.json').success(function(data) {
     $scope.artists = data;
     $scope.whichItem = $routeParams.itemId;

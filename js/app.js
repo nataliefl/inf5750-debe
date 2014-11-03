@@ -7,7 +7,12 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
   when('/', {
     templateUrl: 'partials/list.html',
-    controller: 'ListController'
+    controller: 'ListController',
+        resolve: { //Get API data before the controller instantiates
+          'DHISData': function (jsonData){
+            return jsonData.promise;
+          }
+        }
   }).
   when('/details/:itemId', {
     templateUrl: 'partials/details.html',
