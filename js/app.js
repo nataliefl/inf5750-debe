@@ -5,7 +5,7 @@ var myApp = angular.module('myApp', [
 
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-  when('/list', {
+  when('/', {
     templateUrl: 'partials/list.html',
     controller: 'ListController'
   }).
@@ -14,6 +14,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
     controller: 'DetailsController'
   }).
   otherwise({
-    redirectTo: '/list'
+    redirectTo: '/'
   });
 }]);

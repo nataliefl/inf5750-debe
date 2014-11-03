@@ -1,12 +1,14 @@
 var artistControllers = angular.module('artistControllers', ['ngAnimate']);
 
+//Controller attached to list.html view
 artistControllers.controller('ListController', ['$scope', '$http', function($scope, $http) {
-  $http.get('js/data.json').success(function(data) {
-    $scope.artists = data;
-    $scope.artistOrder = 'name';
-  });
+/*  $http.get('js/data.json').success(function(data) {
+    *//*$scope.artists = data;
+    $scope.artistOrder = 'name';*//*
+  });*/
 }]);
 
+//Controller attached to details.html view
 artistControllers.controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
   $http.get('js/data.json').success(function(data) {
     $scope.artists = data;
