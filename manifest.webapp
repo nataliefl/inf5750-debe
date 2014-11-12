@@ -1,0 +1,22 @@
+{
+    "version":"1.0",
+    "name":"Data Elements Bulk Editor",
+    "description":"Data Elements Bulk Editor",
+    "developer":{
+    "url":"http://inf5750-21.uio.no/",
+        "name":"Stackworkers",
+        "company":"University of Oslo",
+        "email":"email@email.email"
+},
+    "activities":{
+    "dhis":{
+        "href":"*"
+    }
+},
+    "launchUrl":null,
+    "launch_path":"index.html",
+    "installs_allowed_from":[
+    "*"
+],
+    "default_locale":"en"
+}

@@ -1,30 +1,15 @@
-var app = angular.module('artistControllers', ['ngAnimate']);
-
-/*
- * Service that fetches JSON data from the REST API
- * Return a promise object with success and fail properties
- */
-app.factory('jsonData', function($http){
-  var data = null;
-  var promise = $http.jsonp('http://inf5750-21.uio.no/api/dataElements.jsonp?callback=JSON_CALLBACK')
-      .success(function(json){
-        data = json;
-      });
-  return {
-    promise: promise,
-    getData : function(){
-      return data;
-    }
-  }
-});
+//Depedencies listed in array. In addition to angular objects 'ng..' we also add our own modules e.g. 'DataElements'
+var controllers = angular.module('Controllers', ['ngAnimate', 'DataElements','ngResource']);
 
 //Controller attached to list.html view
-app.controller('ListController', ['$scope', '$http','jsonData', function($scope, $http, jsonData) {
-  $scope.data = jsonData.getData();
+//NB: Note the order of dependencies and the the consequent identical order of parameters in the function
+controllers.controller('ListController', ['$scope','DataElements', function($scope, DataElements) {
+  $scope.data = DataElements.getJSONP(); //Query returns a promise object and when it resolves the data is added to the $scope.data property
+
 }]);
 
 //Controller attached to details.html view
-app.controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
+controllers.controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
   $http.get('js/data.json').success(function(data) {
     $scope.artists = data;
     $scope.whichItem = $routeParams.itemId;
