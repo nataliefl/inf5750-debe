@@ -10,7 +10,6 @@
 },
     "activities":{
     "dhis":{
-        "href":"*"
     }
 },
     "launchUrl":null,

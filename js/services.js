@@ -1,10 +1,10 @@
-var services = angular.module('DataElements', ['ngResource']);
+var services = angular.module('DataElements', ['ngResource', 'ngRoute']);
 /**
  * Services are the communication channel between Controllers and the Web.
  */
 
 /*
- * Talks to the DHIS REST API
+ * Talks to the DHIS REST api
  *
  * getJSONP : Fetch JSONP data
  * putJSON : Update data
@@ -12,8 +12,9 @@ var services = angular.module('DataElements', ['ngResource']);
  *
  * Returns a promise object.
  */
-services.factory('DataElements',['$resource', function($resource){
-    return $resource('http://inf5750-21.uio.no/api/dataElements.jsonp', {}, {
-        getJSONP : {'method' : 'JSONP', 'params' : {'callback' : 'JSON_CALLBACK'}}
-    });
-}]);
+ services.factory('DataElements', ['$rootScope','$resource', function($rootScope, $resource){
+ 	return $resource('http://inf5750-21.uio.no/api/:endPointAdr.jsonp', 
+ 		{'endPointAdr': 'dataElements', 'page': '@page'}, 
+ 		{ get : {'method' : 'JSONP', 'params' : {'callback' : 'JSON_CALLBACK'}}		
+ 	});
+ }]);

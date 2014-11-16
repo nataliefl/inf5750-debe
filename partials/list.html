@@ -1,28 +1,26 @@
-<section>
-  <div>
-    <h1>Search</h1>
-    <input type="text" placeholder="Type something" autofocus>
-    <input type="button" name="filter" value="Filter">
-    <input type="button" name="clear" value="Clear">
-    <select>
-      <option>
-        Aggregate
-      </option>
-      <option selected="true">
-        Tracker
-      </option>
-    </select>
-    <input type="button" name="add" value="Add new">
-  </div>
-  <div ng-controller="ListController">
-    <ul class="" ng-show="data">
-      <li class="" ng-repeat="element in data.dataElements ">
-        <a href="#">
-          <div class="info">
-            <h2>{{element.name}}</h2>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
+    <section>
+      <div>
+        <h1>Data Elements Bulk Editor</h1>
+        <input type="text" placeholder="Type to filter" ng-model="search" autofocus>
+        <input type="button" name="clear" ng-click="search = ''" value="Clear">
+        <div class="btn-toolbar" role="toolbar" aria-label="...">
+          <a class="btn btn-default" href="#" ng-click="prevPage()" aria-label="Previous Page">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="btn btn-default" href="#" ng-click="nextPage()" aria-label="Next Page">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <ul class="" ng-show="data">
+          <li class="" ng-repeat="element in data.dataElements | filter : search ">
+            <a href="#">
+              <div class="info">
+                <h2>{{element.name}}</h2>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
