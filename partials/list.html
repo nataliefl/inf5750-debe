@@ -1,26 +1,56 @@
     <section>
       <div>
-        <h1>Data Elements Bulk Editor</h1>
-        <input type="text" placeholder="Type to filter" ng-model="search" autofocus>
-        <input type="button" name="clear" ng-click="search = ''" value="Clear">
-        <div class="btn-toolbar" role="toolbar" aria-label="...">
-          <a class="btn btn-default" href="#" ng-click="prevPage()" aria-label="Previous Page">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-          </a>
-          <a class="btn btn-default" href="#" ng-click="nextPage()" aria-label="Next Page">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
-        </div>
-      </div>
-      <div>
-        <ul class="" ng-show="data">
-          <li class="" ng-repeat="element in data.dataElements | filter : search ">
-            <a href="#">
-              <div class="info">
-                <h2>{{element.name}}</h2>
+        <div class="container-fluid">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h1>Data Elements Bulk Editor</h1>
+            </div>
+          </div>
+          
+          <br>
+
+          <div class="row">
+          <div class="col-xs-12 col-sm-3">
+              <div class="input-group input-group-lg">
+                <input type="text" class="form-control" type="text" placeholder="Type to filter" ng-model="search" autofocus>
+                <span class="input-group-btn">
+                  <button class="btn btn-default" ng-click="search = ''" type="button">Clear</button>
+                </span>
               </div>
-            </a>
-          </li>
-        </ul>
+            </div>          
+          </div>
+
+          <br>
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-2">
+              <div class="btn-toolbar" role="toolbar" aria-label="...">
+                <a class="btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          
+          <div class="row">
+            <div class="col-xs-12">
+              <ul class="" ng-show="data">
+                <li class="" ng-repeat="element in data.dataElements | filter : search ">
+                  <a href="#">
+                    <div class="info">
+                      <h2>{{element.name}}</h2>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>

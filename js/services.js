@@ -13,7 +13,7 @@ var services = angular.module('DataElements', ['ngResource', 'ngRoute']);
  * Returns a promise object.
  */
  services.factory('DataElements', ['$rootScope','$resource', function($rootScope, $resource){
- 	return $resource('http://inf5750-21.uio.no/api/:endPointAdr.jsonp', 
+ 	return $resource($rootScope.baseUrl+'api/:endPointAdr.jsonp', 
  		{'endPointAdr': 'dataElements', 'page': '@page'}, 
  		{ get : {'method' : 'JSONP', 'params' : {'callback' : 'JSON_CALLBACK'}}		
  	});

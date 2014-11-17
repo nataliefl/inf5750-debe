@@ -7,27 +7,15 @@ var app = angular.module('myApp', [
 //Initialize our app
 app.run(['$rootScope', '$http', '$location',function($rootScope, $http, $location){
 
-//Download the manifest.app
-$http.get('/manifest.webapp').
-  success(function(data){
-    //Only $rootScope is available at run() stage. Makes data available in $scope.
-    var url = data.activities.dhis.href;
-    if(angular.isUndefined(url)){
-      $rootScope.baseUrl = 'http://inf5750-21.uio.no/';
-    }else {
-      $rootScope.baseUrl = url;
-    }
-  }).
-  error(function(data, status){
-    //Fallback to location.href
-    $rootScope.baseUrl = $location.absUrl();
-  });
-//Assign app URL to scope variable, all subsequent controllers can access it
+  var xhReq = new XMLHttpRequest();
+    xhReq.open("GET", "manifest.webapp", false);
+    xhReq.send(null);
+    var serverResponse = JSON.parse(xhReq.responseText);
+    $rootScope.baseUrl = serverResponse.activities.dhis.href;
+
 }]);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-
- $locationProvider.html5Mode(true); //Remove hash addresses when using HTML5 compatible browsers
 
   $routeProvider.
   when('/', {

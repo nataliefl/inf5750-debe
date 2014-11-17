@@ -2,6 +2,11 @@
     "version":"1.0",
     "name":"Data Elements Bulk Editor",
     "description":"Data Elements Bulk Editor",
+    "icons":{
+    "16":null,
+        "48":"/images/icon-48.png",
+        "128":"/images/icon.png"
+},
     "developer":{
     "url":"http://inf5750-21.uio.no/",
         "name":"Stackworkers",
@@ -10,6 +15,7 @@
 },
     "activities":{
     "dhis":{
+        "href" : "http://inf5750-21.uio.no/"
     }
 },
     "launchUrl":null,
