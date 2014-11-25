@@ -1,8 +1,3 @@
-var services = angular.module('DataElements', ['ngResource', 'ngRoute']);
-/**
- * Services are the communication channel between Controllers and the Web.
- */
-
 /*
  * Talks to the DHIS REST api
  *
@@ -12,7 +7,8 @@ var services = angular.module('DataElements', ['ngResource', 'ngRoute']);
  *
  * Returns a promise object.
  */
- services.factory('DataElements', ['$rootScope','$resource', function($rootScope, $resource){
+ angular.module('app.services', ['ngResource', 'ngRoute']).
+ factory('DataElements', ['$rootScope','$resource', function($rootScope, $resource){
  	return $resource($rootScope.baseUrl+'api/:endPointAdr.jsonp', 
  		{'endPointAdr': 'dataElements', 'page': '@page'}, 
  		{ get : {'method' : 'JSONP', 'params' : {'callback' : 'JSON_CALLBACK'}}		

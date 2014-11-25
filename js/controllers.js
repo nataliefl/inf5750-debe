@@ -1,9 +1,10 @@
 //Depedencies listed in array. In addition to angular objects 'ng..' we also add our own modules e.g. 'DataElements'
-var controllers = angular.module('Controllers', ['ngAnimate', 'DataElements']);
+//var controllers = angular.module('Controllers', ['ngAnimate', 'DataElements']);
 
 //Controller attached to list.html view
 //NB: Note the order of dependencies and the the consequent identical order of parameters in the function
-controllers.controller('ListController', ['$scope','DataElements', '$location' , '$routeParams', function($scope, DataElements, $location, $routeParams) {
+angular.module('app.controllers',['app.services']).
+controller('ListController', ['$scope','DataElements', '$location' , '$routeParams', function($scope, DataElements, $location, $routeParams) {
 
   $scope.data = DataElements.get({});
 
@@ -11,6 +12,8 @@ controllers.controller('ListController', ['$scope','DataElements', '$location' ,
    if(checkNested($scope, 'data', 'pager','nextPage')){
     var url = $scope.data.pager.nextPage;
     $scope.data = getPage(url);
+  }else{
+    console.log("Could not parse link from dataset.");
   }
 };
 
@@ -18,6 +21,8 @@ $scope.prevPage = function (){
   if(checkNested($scope, 'data', 'pager','prevPage')){
     var url = $scope.data.pager.prevPage;
     $scope.data = getPage(url);
+  }else{
+    console.log("Could not parse link from dataset.");  
   }
 };
 
@@ -37,11 +42,8 @@ function checkNested() {
   return true;
 }
 
-}]);
-
-
-//Controller attached to details.html view
-controllers.controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
+}]).
+controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
   // $scope.elementDetails = DataElements.getJSONP($routeParams.id)
   
 

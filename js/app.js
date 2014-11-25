@@ -1,7 +1,8 @@
 var app = angular.module('myApp', [
-  'ngRoute',
-  'Controllers'
-]);
+  'app.controllers',
+  'app.services',
+  'ngRoute'
+  ]);
 
 
 //Initialize our app
