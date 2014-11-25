@@ -6,41 +6,31 @@
 angular.module('app.controllers',['app.services']).
 controller('ListController', ['$scope','DataElements', '$location' , '$routeParams', function($scope, DataElements, $location, $routeParams) {
 
-  $scope.data = DataElements.get({});
-
+  getPage(1);
+  
   $scope.nextPage = function (){
-   if(checkNested($scope, 'data', 'pager','nextPage')){
-    var url = $scope.data.pager.nextPage;
-    $scope.data = getPage(url);
-  }else{
-    console.log("Could not parse link from dataset.");
+    getPage(++$scope.page);
+  };
+
+  $scope.prevPage = function (){    
+    getPage(--$scope.page);
+  };
+
+  function getPage (page){
+    var pageCount = $scope.pageCount;
+    if(page > pageCount)
+      page = 1;
+    else if(page < 1)
+      page = pageCount;
+
+
+    DataElements.get({'page': page}).$promise.then(function(data){
+      $scope.data = data;
+      $scope.page = data.pager.page;
+      $scope.pageCount = data.pager.pageCount;
+    });
+
   }
-};
-
-$scope.prevPage = function (){    
-  if(checkNested($scope, 'data', 'pager','prevPage')){
-    var url = $scope.data.pager.prevPage;
-    $scope.data = getPage(url);
-  }else{
-    console.log("Could not parse link from dataset.");  
-  }
-};
-
-function getPage (url){
-  return DataElements.get({'page': url.split("page=").pop() });
-}
-
-function checkNested() {
-  var args = Array.prototype.slice.call(arguments), obj = args.shift();
-
-  for (var i = 0; i < args.length; i++) {
-    if (!obj || !obj.hasOwnProperty(args[i])) {
-      return false;
-    }
-    obj = obj[args[i]];
-  }
-  return true;
-}
 
 }]).
 controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
