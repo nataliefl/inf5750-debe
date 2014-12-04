@@ -11,7 +11,7 @@
           <br>
 
           <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-2">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
               <div class="input-group input-group-lg">
                 <input type="text" class="form-control" type="text" placeholder="Type to filter" ng-model="search" autofocus>
                 <span class="input-group-btn">
@@ -32,6 +32,12 @@
                 <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
                   <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
+                <p>
+                  <span class="label label-default">
+                    Page {{currentPage}} of {{pageCount}}                  
+                  </span>
+
+                </p>
               </div>
             </div>
           </div>
@@ -42,11 +48,13 @@
             <div class="col-xs-12">
               <ul class="" ng-show="data">
                 <li class="" ng-repeat="element in data.dataElements | filter : search ">
-                  <a href="#">
-                    <div class="info">
-                      <h2>{{element.name}}</h2>
-                    </div>
+                  <a ng-href="#/details/{{element.id}}">
+                  {{element.name}}
                   </a>
+                  <a ng-click="edit(element.id)" class="btn btn-small btn-primary">Edit
+                      </a>
+                      <a ng-click="delete(element.id)" class="btn btn-small btn-primary">Delete
+                      </a>
                 </li>
               </ul>
             </div>

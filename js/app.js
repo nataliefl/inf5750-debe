@@ -23,9 +23,9 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: 'partials/list.html',
     controller: 'ListController'//Page should not reload when searching for query parameter i.e. ? page = ...
   }).
-  when('/data-elements/page/', {
-    templateUrl: 'partials/list.html',
-    controller: 'ListController'
+  when('/details/:id', {
+    templateUrl: 'partials/details.html',
+    controller: 'DetailsController'
   }).
   otherwise('/');
   

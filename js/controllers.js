@@ -9,24 +9,30 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
   getPage(1);
   
   $scope.nextPage = function (){
-    getPage(++$scope.page);
+    getPage($scope.currentPage + 1);
   };
 
   $scope.prevPage = function (){    
-    getPage(--$scope.page);
+    getPage($scope.currentPage - 1);
+  };
+
+  $scope.delete=function(id)
+  {
+    DataElements.delete({'id' : id});
   };
 
   function getPage (page){
+    
     var pageCount = $scope.pageCount;
+    
     if(page > pageCount)
       page = 1;
-    else if(page < 1)
+    else if(page <= 0)
       page = pageCount;
-
 
     DataElements.get({'page': page}).$promise.then(function(data){
       $scope.data = data;
-      $scope.page = data.pager.page;
+      $scope.currentPage = data.pager.page;
       $scope.pageCount = data.pager.pageCount;
     });
 
