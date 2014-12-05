@@ -3,7 +3,7 @@
 
 //Controller attached to list.html view
 //NB: Note the order of dependencies and the the consequent identical order of parameters in the function
-angular.module('app.controllers',['app.services']).
+angular.module('app.controllers',['app.services', 'ui.bootstrap']).
 controller('ListController', ['$scope','DataElements', '$location' , '$routeParams', function($scope, DataElements, $location, $routeParams) {
 
   getPage(1);
