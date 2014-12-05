@@ -1,21 +1,113 @@
 <form role="form">
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        <label for="nameInput">Name</label>
+        <input type="text" class="form-control" id="nameInput" required>
     </div>
+
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="shortNameInput">Short name</label>
+        <input type="text" class="form-control" id="shortNameInput">
     </div>
+
     <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-        <p class="help-block">Example block-level help text here.</p>
+        <label for="codeInput">Code</label>
+        <input type="text" class="form-control" id="codeInput">
     </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Check me out
-        </label>
+
+    <div class="form-group">
+        <label for="descriptionTextArea">Description</label>
+        <textarea rows="4" cols="50" class="form-control" id="descriptionTextArea" placeholder="Describe the case">
+        </textarea>
     </div>
+
+    <div class="form-group">
+        <label for="formNameInput">Form name</label>
+        <input type="text" class="form-control" id="formNameInput">
+    </div>
+
+    <div class="form-group">
+        <label for="domainTypeSelector">Domain Type</label>
+        <input list="domainTypeList" id="domainTypeSelector" required>
+        <datalist id="domainTypeList">
+            <option value="Aggregate">
+            <option value="Tracker">
+        </datalist>
+    </div>
+
+    <div class="form-group">
+        <label for="valueTypeSelector">Value Type</label>
+        <input list="valueTypeList" id="valueTypeSelector" required>
+        <datalist id="valueTypeList">
+            <option value="Number">
+            <option value="Text">
+            <option value="Yes/No">
+            <option value="Yes Only">
+            <option value="Date">
+            <option value="User name">
+        </datalist>
+    </div>
+
+
+    <div class="form-group">
+        <label for="numberTypeSelector">Number Type</label>
+        <input list="numberTypeList" id="numberTypeSelector">
+        <datalist id="numberType">
+            <option value="Number">
+            <option value="Integer">
+            <option value="Positive Integer">
+            <option value="Negative Integer">
+            <option value="Unit interval">
+            <option value="Percentage">
+        </datalist>
+    </div>
+
+    <div class="form-group">
+        <label for="aggregationOperatorSelector">Aggregation operator</label>
+        <input list="aggregationOperatorList" id="aggregationOperatorSelector" required>
+        <datalist id="aggregationOperatorList">
+            <option value="Sum">
+            <option value="Average">
+            <option value="Count">
+            <option value="Standard deviation">
+            <option value="Variance">
+            <option value="Min">
+            <option value="Max">
+        </datalist>
+    </div>
+
+    <div class="form-group">
+        <label for="storeZeroDataValuesSelector">Store zero data values</label>
+        <input list="storeZeroDataValuesList" id="storeZeroDataValuesSelector">
+        <datalist id="storeZeroDataValuesList">
+            <option value="Yes">
+            <option value="No">
+        </datalist>
+    </div>
+
+    <div class="form-group">
+        <label for="urlInput">URL</label>
+        <input type="url" class="form-control" id="urlInput">
+    </div>
+
+    <div class="form-group">
+        <label for="categoryCombinationSelector">Category Combination</label>
+        <input list="categoryCombinationList" id="categoryCombinationSelector" required>
+        <datalist id="categoryCombinationList">
+            <option value="‌Births">
+            <option value="Commodities">
+            <option value="default">
+            <option value="Fixed/Outreach">
+            <option value="HIV age">
+            <option value="HIV age+gender">
+            <option value="HIV paed age+gender">
+            <option value="Location and age group">
+            <option value="Maternal deaths">
+            <option value="Morbidity deaths">
+            <option value="Morbidity Referrals">
+            <option value="Pregnancy complications">
+        </datalist>
+    </div>
+
     <button type="submit" class="btn btn-default">Submit</button>
+    <input Type="button" VALUE="Cancel" onclick="window.location.href='#/'" class="btn btn-warning">
 </form>
