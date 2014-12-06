@@ -41,8 +41,7 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
 }]).
 controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
   // $scope.elementDetails = DataElements.getJSONP($routeParams.id)
-  
-
+        $scope.elementID=$routeParams.id;
   console.log("Details Controller");
   // $http.get('js/data.json').success(function(data) {
   //   $scope.artists = data;
