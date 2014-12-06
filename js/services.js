@@ -9,12 +9,21 @@
  */
  angular.module('app.services', ['ngResource', 'ngRoute']).
  factory('DataElements', ['$rootScope','$resource', function($rootScope, $resource){
- 	return $resource( $rootScope.baseUrl + 'api/:endPointAdr/:id', 
+ 	return $resource( $rootScope.baseUrl + 'api/:endPointAdr/:id',
  	{
  		'endPointAdr': 'dataElements', 
  		'callback' : 'JSON_CALLBACK'
  	}, 
- 	{ 
+ 	{
+        retrieveDetails:
+        {
+            'method' : 'JSONP',
+            'params' :
+            {
+                'format' : 'jsonp',
+                'id' : '@id'
+            }
+        },
  		get : 
  		{
  			'method' : 'JSONP',  
@@ -26,7 +35,7 @@
  		},
  		delete : 
  		{
- 			'method' : 'GET',
+ 			'method' : 'DELETE',
  			'params' : 
  			{
  				'id' : '@id'

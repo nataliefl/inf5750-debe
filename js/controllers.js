@@ -21,6 +21,12 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
     DataElements.delete({'id' : id});
   };
 
+  $scope.getDetails=function(id){
+      DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
+          $scope.OpenedItem = data;
+      });
+  }
+
   function getPage (page){
     
     var pageCount = $scope.pageCount;
