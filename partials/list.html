@@ -1,5 +1,4 @@
-<section>
-    <div>
+
         <div class="container-fluid">
 
             <div class="row">
@@ -68,10 +67,17 @@
 
             </div>
 
-            <div class="row">
-                <div class="col-xs-12">
+            <div >
+                <div >
                     <accordion close-others="true">
                         <accordion-group heading="{{element.name}}" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
+                            <accordion-heading>
+                                {{element.name}}
+                                <div class="pull-right btn-group btn-group-sm">
+                                    <button class="btn btn-primary btn-sm">Edit</button>
+                                    <button class="btn btn-danger btn-sm" ng-click="$event.stopPropagation();">Delete</button>
+                                </div>
+                            </accordion-heading>
 
                             <!--INSIDE-->
                             <form role="form">
@@ -184,16 +190,11 @@
                                     </datalist>
                                 </div>
 
-                                <button type="submit" class="btn btn-default">Save</button>
+                                <button type="submit" ng-click="save(element.id)" class="btn btn-default">Save</button>
                                 <button type="reset" class="btn btn-warning">Reset</button>
-                                <button ng-click="delete(element.i)" class="btn btn-danger">Delete</button>
                             </form>
                             <!--END INSIDE-->
-                            <!--<a ng-href="#/details/element.id" class="btn btn-small btn-primary">Edit</a>-->
-                            <!--<button ng-click="delete(element.i)" class="btn btn-small btn-primary">Delete</button>
-          -->                  <accordion-heading>
-                                <span ng-click="open(element, $index)">{{element.name}}</span>
-                            </accordion-heading>
+
                         </accordion-group>
                     </accordion>
                 </div>

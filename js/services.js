@@ -26,7 +26,7 @@
  		},
  		delete : 
  		{
- 			'method' : 'DELETE',
+ 			'method' : 'GET',
  			'params' : 
  			{
  				'id' : '@id'
