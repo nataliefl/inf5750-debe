@@ -1,79 +1,203 @@
-    <section>
-      <div>
+<section>
+    <div>
         <div class="container-fluid">
 
-          <div class="row">
-            <div class="col-xs-12">
-              <h1>Data Elements Bulk Editor</h1>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Data Elements Bulk Editor</h1>
+                </div>
             </div>
-          </div>
-          
-          <br>
 
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-              <div class="input-group input-group-lg">
-                <input type="text" class="form-control" type="text" placeholder="Type to filter" ng-model="search" autofocus>
+            <br>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-4 ">
+                    <div class="input-group">
+                        <input type="text" class="form-control" type="text" placeholder="Type to filter" ng-model="search" autofocus>
                 <span class="input-group-btn">
                   <button class="btn btn-default" ng-click="search = ''" type="button">Clear</button>
                 </span>
-              </div>
-            </div>          
-          </div>
+                    </div>
+                </div>
 
-          <br>
+                <div class="col-xs-3 col-sm-2">
+                    <div class="btn-toolbar" role="toolbar" aria-label="...">
+                        <a class="btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
 
-          <div class="row">
-            <div class="col-xs-12 col-sm-2">
-              <div class="btn-toolbar" role="toolbar" aria-label="...">
-                <a class="btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-                <p>
-                  <span class="label label-default">
-                    Page {{currentPage}} of {{pageCount}}                  
-                  </span>
+                <div class="col-xs-12 col-sm-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="pageRowCount">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Rows</button>
+                </span>
+                    </div>
 
-                </p>
-              </div>
+                </div>
+
             </div>
-          </div>
 
-          <br>
+            <br>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>
+                        Page {{currentPage}} of {{pageCount}}
+                    </p>
+                </div>
+                <!--      <div class="col-xs-12">
+                       <nav>
+                         <ul class="pagination pagination-sm">
+                           <li class="">
+                             <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                             <span class="sr-only">Previous</span>
+                             </li>
+                             <li class="active">
+                             <span>1 <span class="sr-only">(current)</span></span></li>
+                             <li class="">
+                             <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next</span></li>
+                           </ul>
+                         </nav>
+                       </div> -->
 
-            <table ng-table="tableParams" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="element in data.dataElements | filter:query" class="repeat-animation">
-                    <td>{{element.name}}</td>
-                    <td><a href="#/details/{{element.id}}" class="btn btn-small btn-primary">Edit</a>
-                        <a ng-click="delete(element.id)" class="btn btn-small btn-primary">Delete</a></td>
-                </tr>
-                </tbody>
-            </table>
-          <!--<div class="row">-->
-            <!--<div class="col-xs-12">-->
-              <!--<ul class="" ng-show="data">-->
-                <!--<li class="" ng-repeat="element in data.dataElements | filter : search ">-->
-                  <!--<a ng-href="#/details/{{element.id}}">-->
-                  <!--{{element.name}}-->
-                  <!--</a>-->
-                  <!--<a ng-click="edit(element.id)" class="btn btn-small btn-primary">Edit-->
-                      <!--</a>-->
-                      <!--<a ng-click="delete(element.id)" class="btn btn-small btn-primary">Delete-->
-                      <!--</a>-->
-                <!--</li>-->
-              <!--</ul>-->
-            <!--</div>-->
-          <!--</div>-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <accordion close-others="true">
+                        <accordion-group heading="{{element.name}}" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
+                            
+                            <!--INSIDE-->
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="nameInput">Name</label>
+                                    <input type="text" class="form-control" id="nameInput" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="shortNameInput">Short name</label>
+                                    <input type="text" class="form-control" id="shortNameInput">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="codeInput">Code</label>
+                                    <input type="text" class="form-control" id="codeInput">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="descriptionTextArea">Description</label>
+                                    <textarea rows="4" cols="50" class="form-control" id="descriptionTextArea" placeholder="Describe the case">
+                                    </textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="formNameInput">Form name</label>
+                                    <input type="text" class="form-control" id="formNameInput">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="domainTypeSelector">Domain Type</label>
+                                    <input list="domainTypeList" id="domainTypeSelector" required>
+                                    <datalist id="domainTypeList">
+                                        <option value="Aggregate">
+                                        <option value="Tracker">
+                                    </datalist>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="valueTypeSelector">Value Type</label>
+                                    <input list="valueTypeList" id="valueTypeSelector" required>
+                                    <datalist id="valueTypeList">
+                                        <option value="Number">
+                                        <option value="Text">
+                                        <option value="Yes/No">
+                                        <option value="Yes Only">
+                                        <option value="Date">
+                                        <option value="User name">
+                                    </datalist>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="numberTypeSelector">Number Type</label>
+                                    <input list="numberTypeList" id="numberTypeSelector">
+                                    <datalist id="numberType">
+                                        <option value="Number">
+                                        <option value="Integer">
+                                        <option value="Positive Integer">
+                                        <option value="Negative Integer">
+                                        <option value="Unit interval">
+                                        <option value="Percentage">
+                                    </datalist>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="aggregationOperatorSelector">Aggregation operator</label>
+                                    <input list="aggregationOperatorList" id="aggregationOperatorSelector" required>
+                                    <datalist id="aggregationOperatorList">
+                                        <option value="Sum">
+                                        <option value="Average">
+                                        <option value="Count">
+                                        <option value="Standard deviation">
+                                        <option value="Variance">
+                                        <option value="Min">
+                                        <option value="Max">
+                                    </datalist>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="storeZeroDataValuesSelector">Store zero data values</label>
+                                    <input list="storeZeroDataValuesList" id="storeZeroDataValuesSelector">
+                                    <datalist id="storeZeroDataValuesList">
+                                        <option value="Yes">
+                                        <option value="No">
+                                    </datalist>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="urlInput">URL</label>
+                                    <input type="url" class="form-control" id="urlInput">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="categoryCombinationSelector">Category Combination</label>
+                                    <input list="categoryCombinationList" id="categoryCombinationSelector" required>
+                                    <datalist id="categoryCombinationList">
+                                        <option value="‌Births">
+                                        <option value="Commodities">
+                                        <option value="default">
+                                        <option value="Fixed/Outreach">
+                                        <option value="HIV age">
+                                        <option value="HIV age+gender">
+                                        <option value="HIV paed age+gender">
+                                        <option value="Location and age group">
+                                        <option value="Maternal deaths">
+                                        <option value="Morbidity deaths">
+                                        <option value="Morbidity Referrals">
+                                        <option value="Pregnancy complications">
+                                    </datalist>
+                                </div>
+
+                                <button type="submit" class="btn btn-default">Save</button>
+                                <button type="reset" class="btn btn-warning">Reset</button>
+                                <button ng-click="delete(element.i)" class="btn btn-danger">Delete</button>
+                            </form>
+                            <!--END INSIDE-->
+                            <!--<a ng-href="#/details/element.id" class="btn btn-small btn-primary">Edit</a>-->
+                            <!--<button ng-click="delete(element.i)" class="btn btn-small btn-primary">Delete</button>
+          -->                  <accordion-heading>
+                                <span ng-click="open(element, $index)">{{element.name}}</span>
+                            </accordion-heading>
+                        </accordion-group>
+                    </accordion>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
