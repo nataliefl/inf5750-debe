@@ -1,79 +1,88 @@
-    <section>
-      <div>
+<section>
+    <div>
         <div class="container-fluid">
 
-          <div class="row">
-            <div class="col-xs-12">
-              <h1>Data Elements Bulk Editor</h1>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Data Elements Bulk Editor</h1>
+                </div>
             </div>
-          </div>
-          
-          <br>
 
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-              <div class="input-group input-group-lg">
-                <input type="text" class="form-control" type="text" placeholder="Type to filter" ng-model="search" autofocus>
+            <br>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-4 ">
+                    <div class="input-group">
+                        <input type="text" class="form-control" type="text" placeholder="Type to filter" ng-model="search" autofocus>
                 <span class="input-group-btn">
                   <button class="btn btn-default" ng-click="search = ''" type="button">Clear</button>
                 </span>
-              </div>
-            </div>          
-          </div>
+                    </div>
+                </div>
 
-          <br>
+                <div class="col-xs-3 col-sm-2">
+                    <div class="btn-toolbar" role="toolbar" aria-label="...">
+                        <a class="btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
 
-          <div class="row">
-            <div class="col-xs-12 col-sm-2">
-              <div class="btn-toolbar" role="toolbar" aria-label="...">
-                <a class="btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-                <p>
-                  <span class="label label-default">
-                    Page {{currentPage}} of {{pageCount}}                  
-                  </span>
+                <div class="col-xs-12 col-sm-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="pageRowCount">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">Rows</button>
+                </span>
+                    </div>
 
-                </p>
-              </div>
+                </div>
+
             </div>
-          </div>
 
-          <br>
+            <br>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>
+                        Page {{currentPage}} of {{pageCount}}
+                    </p>
+                </div>
+                <!--      <div class="col-xs-12">
+                       <nav>
+                         <ul class="pagination pagination-sm">
+                           <li class="">
+                             <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                             <span class="sr-only">Previous</span>
+                             </li>
+                             <li class="active">
+                             <span>1 <span class="sr-only">(current)</span></span></li>
+                             <li class="">
+                             <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span><span class="sr-only">Next</span></li>
+                           </ul>
+                         </nav>
+                       </div> -->
 
-            <table ng-table="tableParams" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="element in data.dataElements | filter:query" class="repeat-animation">
-                    <td>{{element.name}}</td>
-                    <td><a href="#/details/{{element.id}}" class="btn btn-small btn-primary">Edit</a>
-                        <a ng-click="delete(element.id)" class="btn btn-small btn-primary">Delete</a></td>
-                </tr>
-                </tbody>
-            </table>
-          <!--<div class="row">-->
-            <!--<div class="col-xs-12">-->
-              <!--<ul class="" ng-show="data">-->
-                <!--<li class="" ng-repeat="element in data.dataElements | filter : search ">-->
-                  <!--<a ng-href="#/details/{{element.id}}">-->
-                  <!--{{element.name}}-->
-                  <!--</a>-->
-                  <!--<a ng-click="edit(element.id)" class="btn btn-small btn-primary">Edit-->
-                      <!--</a>-->
-                      <!--<a ng-click="delete(element.id)" class="btn btn-small btn-primary">Delete-->
-                      <!--</a>-->
-                <!--</li>-->
-              <!--</ul>-->
-            <!--</div>-->
-          <!--</div>-->
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <accordion close-others="true">
+                        <accordion-group heading="{{element.name}}" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
+                            Here will be details!
+                            {{element.detail}}
+                            <a ng-href="#/details/element.id" class="btn btn-small btn-primary">Edit</a>
+                            <button ng-click="delete(element.i)" class="btn btn-small btn-primary">Delete</button>
+                            <accordion-heading>
+                                <span ng-click="open(element, $index)">{{element.name}}</span>
+                            </accordion-heading>
+                        </accordion-group>
+                    </accordion>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
