@@ -38,8 +38,17 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
   {
     DataElements.delete({'id' : id});
   };
+
+  $scope.save = function(){
+
+console.log("test");
+    DataElements.save($scope.elementDetails);
+  };
+
   $scope.getDetails=function(id){
       DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
+        $scope.elementDetails = data;
+
           $scope.openedItem = data;
           $scope.nameInput = $scope.openedItem.name;
           $scope.shortNameInput=$scope.openedItem.shortName;
