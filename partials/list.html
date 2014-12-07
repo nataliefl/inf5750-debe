@@ -206,7 +206,7 @@
 
     <div class="form-group">
       <select class="form-control" id="categoryCombinationList">
-        <option  ng-repeat="item in categoryItems" value="{{item.name}}">{{item.name}}</option>
+        <option  ng-repeat="item in categoryItems" value="{{::item.name}}">{{item.name}}</option>
       </select>
     </div>
   </div>
@@ -220,7 +220,7 @@
 
     <div class="form-group">
       <select class="form-control" id="optionSetForDataValuesList">
-        <option  ng-repeat="item in optionItems" value="{{item.name}}">{{item.name}}</option>
+        <option  ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
       </select>
     </div>
   </div>
@@ -234,7 +234,7 @@
 
     <div class="form-group">
       <select class="form-control" id="optionSetForCommentsList">
-        <option  ng-repeat="item in optionItems" value="{{item.name}}">{{item.name}}</option>
+        <option  ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
       </select>
     </div>
   </div>
@@ -248,7 +248,7 @@
 
     <div class="form-group">
       <select class="form-control" id="legendSetsList">
-        <option  ng-repeat="item in legendItems" value="{{item.name}}">{{item.name}}</option>
+        <option  ng-repeat="item in legendItems" value="{{::item.name}}">{{item.name}}</option>
       </select>
     </div>
   </div>
