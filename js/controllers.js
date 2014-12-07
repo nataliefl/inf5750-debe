@@ -39,6 +39,12 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
     DataElements.delete({'id' : id});
   };
 
+
+  $scope.save=function()
+  {
+    console.log($scope.openedItem.name);
+  };
+
   $scope.getDetails=function(id){
       DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
           $scope.openedItem = data;
