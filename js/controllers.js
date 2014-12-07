@@ -8,7 +8,7 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
 
   pageInit();
   function pageInit(){
-    getPage(1);
+    getPage();
 
 
     DataElements.retrieveCategories().$promise.then(function(data){
@@ -36,11 +36,10 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
 
   $scope.delete=function(id)
   {
-    // $httpProvider.defaults.headers.put['Content-Type'] = 'application/json';
-    //$resource header customization is malfunctioning. This is a workaround to prevent OPTIONS preflight on DELETE requests
-    //TODO : Replace with $resource fix
-    // $http.delete('api/dataElements/'+id);
-    DataElements.delete({'id' : id});
+    DataElements.delete({'id' : id}).$promise.then(function(response, status){
+      getPage();
+    });
+
   };
 
 
@@ -82,7 +81,10 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
 
 function getPage (page){
 
-  var pageCount = $scope.pageCount;
+  if(!page)
+    page = $scope.currentPage ? $scope.currentPage : 1;
+
+  var pageCount = $scope.pageCount ? $scope.pageCount : 2;
 
   if(page > pageCount)
     page = 1;
