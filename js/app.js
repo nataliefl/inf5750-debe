@@ -27,7 +27,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: 'partials/details.html',
     controller: 'DetailsController'
   }).
-  otherwise('/');
+  otherwise({'redirectTo':'/'});
   
 
 
