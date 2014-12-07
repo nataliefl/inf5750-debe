@@ -63,40 +63,46 @@
 
     <!--INSIDE-->
     <div class="row">
-      <div class="col-xs-12 col-sm-3">
+      <div class="col-xs-12 col-sm-2">
+        <label for="nameInput">Name</label>
+      </div>
+      <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-          <label for="nameInput">Name</label>
-          <input type="text" class="form-control" id="nameInput" value="{{openedItem.name}}" required>
+          <input type="text" class="form-control" id="nameInput" value="{{ openedItem.name }}">
         </div>
       </div>
-      <div class="col-xs-12 col-sm-3">
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-2">
+        <label for="shortNameInput">Short Name</label>
+      </div>
+      <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-          <label for="shortNameInput">Short Name</label>
           <input type="text" class="form-control" id="shortNameInput" value="{{openedItem.shortName}}">
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-3">
+      <div class="col-xs-12 col-sm-2">
+        <label for="codeInput">Code</label>
+      </div>
+      <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-          <label for="codeInput">Code</label>
           <input type="text" class="form-control" id="codeInput" value="{{openedItem.code}}">
         </div>
       </div>
-<!--      <div class="col-xs-12 col-sm-3">
-        <div class="form-group">
-          <label for="inputNameInput">Input Name</label>
-          <input type="text" class="form-control" id="inputNameInput">
-        </div>
-      </div>
-    </div>-->
+    </div>
+
 
     <div class="row">
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12 col-sm-2">
+        <label for="descriptionTextArea">Description</label>
+      </div>
+      <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-          <label for="descriptionTextArea">Description</label>
-          <textarea rows="3" class="form-control" id="descriptionTextArea" placeholder="Describe the case">
+            <textarea rows="3" class="form-control" id="descriptionTextArea">
           </textarea>
         </div>
       </div>
@@ -184,13 +190,13 @@
 </div>
 <div class="row">
  <div class="col-xs-12 col-sm-2">
-    <label for="urlInput">URL</label>
+  <label for="urlInput">URL</label>
+</div>
+<div class="col-xs-12 col-sm-4">
+  <div class="form-group">
+    <input type="url" class="form-control" id="urlInput">
   </div>
-  <div class="col-xs-12 col-sm-4">
-    <div class="form-group">
-      <input type="url" class="form-control" id="urlInput">
-    </div>
-  </div>
+</div>
 </div>
 <div class="row">
   <div class="col-xs-12 col-sm-2">
@@ -200,19 +206,7 @@
 
     <div class="form-group">
       <select class="form-control" id="categoryCombinationList">
-          <option  ng-repeat="item in categoryItems" value="{{item.name}}">{{item.name}}</option>
-          <!--        <option value="‌Births">‌Births</option>
-        <option value="Commodities">Commodities</option>
-        <option value="default">default</option>
-        <option value="Fixed/Outreach">Fixed/Outreach</option>
-        <option value="HIV age">HIV Age</option>
-        <option value="HIV age+gender">HIV age+gender</option>
-        <option value="HIV paed age+gender">HIV paed age+gender</option>
-        <option value="Location and age group">Location and age group</option>
-        <option value="Maternal deaths">Maternal deaths</option>
-        <option value="Morbidity deaths">Morbidity deaths</option>
-        <option value="Morbidity Referrals">Morbidity Referrals</option>
-        <option value="Pregnancy complications">Pregnancy complications</option>-->
+        <option  ng-repeat="item in categoryItems" value="{{item.name}}">{{item.name}}</option>
       </select>
     </div>
   </div>
@@ -220,118 +214,74 @@
 
 
 
-      <div class="row">
-          <div class="col-xs-12 col-sm-2">
-              <label for="optionSetForDataValuesList">Option set for data values</label>
-          </div>
-          <div class="col-xs-12 col-sm-4">
+<div class="row">
+  <div class="col-xs-12 col-sm-2">
+    <label for="optionSetForDataValuesList">Option set for data values</label>
+  </div>
+  <div class="col-xs-12 col-sm-4">
 
-              <div class="form-group">
-                  <select class="form-control" id="optionSetForDataValuesList">
-                      <option  ng-repeat="item in optionItems" value="{{item.name}}">{{item.name}}</option>
-                  </select>
-              </div>
-          </div>
-      </div>
+    <div class="form-group">
+      <select class="form-control" id="optionSetForDataValuesList">
+        <option  ng-repeat="item in optionItems" value="{{item.name}}">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+</div>
 
-      <div class="row">
-          <div class="col-xs-12 col-sm-2">
-              <label for="optionSetForCommentsList">Option set for comments</label>
-          </div>
-          <div class="col-xs-12 col-sm-4">
+<div class="row">
+  <div class="col-xs-12 col-sm-2">
+    <label for="optionSetForCommentsList">Option set for comments</label>
+  </div>
+  <div class="col-xs-12 col-sm-4">
 
-              <div class="form-group">
-                  <select class="form-control" id="optionSetForCommentsList">
-                      <option  ng-repeat="item in optionItems" value="{{item.name}}">{{item.name}}</option>
-                  </select>
-              </div>
-          </div>
-      </div>
+    <div class="form-group">
+      <select class="form-control" id="optionSetForCommentsList">
+        <option  ng-repeat="item in optionItems" value="{{item.name}}">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+</div>
 
-      <div class="row">
-          <div class="col-xs-12 col-sm-2">
-              <label for="legendSetsList">Legend set</label>
-          </div>
-          <div class="col-xs-12 col-sm-4">
+<div class="row">
+  <div class="col-xs-12 col-sm-2">
+    <label for="legendSetsList">Legend set</label>
+  </div>
+  <div class="col-xs-12 col-sm-4">
 
-              <div class="form-group">
-                  <select class="form-control" id="legendSetsList">
-                      <option  ng-repeat="item in legendItems" value="{{item.name}}">{{item.name}}</option>
-                  </select>
-              </div>
-          </div>
-      </div>
-
-
-      <div class="row">
-          <div class="col-xs-12 col-sm-2">
-              <label for="optionSetForCommentsList">Aggregation level</label>
-          </div>
-          <div class="col-xs-12 col-sm-4">
-
-              <div class="form-group">
-                      <input type="checkbox" ng-model="checked">
-              </div>
-              <div class="check-element" ng-show="checked">
-              <label class="checkbox-inline">
-                  <input type="checkbox" id="nationalCheckbox" value="1"> National
-              </label>
-              <label class="checkbox-inline">
-                  <input type="checkbox" id="districtCheckbox" value="2"> District
-              </label>
-              <label class="checkbox-inline">
-                  <input type="checkbox" id="chiefdomCheckbox" value="3"> Chiefdom
-              </label>
-                  <label class="checkbox-inline">
-                      <input type="checkbox" id="facilityCheckbox" value="4"> Facility
-                  </label>
-              </div>
-          </div>
-      </div>
+    <div class="form-group">
+      <select class="form-control" id="legendSetsList">
+        <option  ng-repeat="item in legendItems" value="{{item.name}}">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+</div>
 
 
- <!--     Click me: <input type="checkbox" ng-model="checked"><br/>
-      <div>
-          Show:
-          <div class="check-element animate-show" ng-show="checked">
-              <span class="glyphicon glyphicon-thumbs-up"></span> I show up when your checkbox is checked.
-          </div>
-      </div>-->
+<div class="row">
+  <div class="col-xs-12 col-sm-2">
+    <label for="optionSetForCommentsList">Aggregation level</label>
+  </div>
+  <div class="col-xs-12 col-sm-4">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div class="check-element">
+      <label class="checkbox-inline">
+        <input type="checkbox" id="nationalCheckbox" value="1"> National
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="districtCheckbox" value="2"> District
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="chiefdomCheckbox" value="3"> Chiefdom
+      </label>
+      <label class="checkbox-inline">
+        <input type="checkbox" id="facilityCheckbox" value="4"> Facility
+      </label>
+    </div>
+  </div>
+</div>
 
 <br>
+
 <div class="row">
   <div class="col-xs-3 col-sm-1">
     <button type="submit" ng-click="save(element.id)" class="btn btn-default">Save</button>
@@ -347,7 +297,6 @@
 
 </div>
 </div>
-
 
 <!--END INSIDE-->
 
