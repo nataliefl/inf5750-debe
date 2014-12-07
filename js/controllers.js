@@ -6,8 +6,48 @@
 angular.module('app.controllers',['app.services', 'ui.bootstrap']).
 controller('ListController', ['$scope','DataElements', '$location' , '$routeParams', function($scope, DataElements, $location, $routeParams) {
 
-  getPage(1);
-  
+
+  function pageInit(){
+      getPage(1);
+      DataElements.retrieveCategories({'page': 1}).$promise.then(function(data){
+          $scope.categoryItems=data.categoryCombos;
+          if(data.pager.pageCount>1)
+          {
+              for(i=2;i<=data.pager.pageCount;i++)
+                  DataElements.retrieveCategories({'page': i}).$promise.then(function(data){
+                      var temp=$scope.categoryItems.concat(data.categoryCombos);
+                      $scope.categoryItems=temp;
+                  });
+          }
+      });
+
+      DataElements.retrieveOptions({'page': 1}).$promise.then(function(data){
+          $scope.optionItems=data.optionSets;
+          if(data.pager.pageCount>1)
+          {
+              for(i=2;i<=data.pager.pageCount;i++)
+                  DataElements.retrieveOptions({'page': i}).$promise.then(function(data){
+                      var temp=$scope.optionItems.concat(data.optionSets);
+                      $scope.optionItems=temp;
+                  });
+          }
+      });
+
+
+      DataElements.retrieveLegends({'page': 1}).$promise.then(function(data){
+          $scope.legendItems=data.mapLegendSets;
+          if(data.pager.pageCount>1)
+          {
+              for(i=2;i<=data.pager.pageCount;i++)
+                  DataElements.retrieveLegends({'page': i}).$promise.then(function(data){
+                      var temp=$scope.legendItems.concat(data.mapLegendSets);
+                      $scope.legendItems=temp;
+                  });
+          }
+      });
+
+  }
+  pageInit();
   $scope.nextPage = function (){
     getPage($scope.currentPage + 1);
   };
@@ -25,8 +65,16 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
       DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
           $scope.openedItem = data;
       });
-      DataElements.retrieveCategories().$promise.then(function(data){
+/*      DataElements.retrieveCategories({'page': 1}).$promise.then(function(data){
           $scope.categoryItems=data.categoryCombos;
+          if(data.pager.pageCount>1)
+          {
+              for(i=2;i<=data.pager.pageCount;i++)
+                  DataElements.retrieveCategories({'page': i}).$promise.then(function(data){
+                      var temp=$scope.categoryItems.concat(data.categoryCombos);
+                      $scope.categoryItems=temp;
+                  });
+          }
       });
 
       DataElements.retrieveOptions({'page': 1}).$promise.then(function(data){
@@ -39,7 +87,7 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
                   $scope.optionItems=temp;
               });
           }
-      });
+      });*/
   };
 
 

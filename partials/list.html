@@ -97,7 +97,6 @@
         <div class="form-group">
           <label for="descriptionTextArea">Description</label>
           <textarea rows="3" class="form-control" id="descriptionTextArea" placeholder="Describe the case">
-              {{optionItems}}
           </textarea>
         </div>
       </div>
@@ -218,6 +217,120 @@
     </div>
   </div>
 </div>
+
+
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-2">
+              <label for="optionSetForDataValuesList">Option set for data values</label>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+
+              <div class="form-group">
+                  <select class="form-control" id="optionSetForDataValuesList">
+                      <option  ng-repeat="item in optionItems" value="{{item.name}}">{{item.name}}</option>
+                  </select>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-2">
+              <label for="optionSetForCommentsList">Option set for comments</label>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+
+              <div class="form-group">
+                  <select class="form-control" id="optionSetForCommentsList">
+                      <option  ng-repeat="item in optionItems" value="{{item.name}}">{{item.name}}</option>
+                  </select>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-2">
+              <label for="legendSetsList">Legend set</label>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+
+              <div class="form-group">
+                  <select class="form-control" id="legendSetsList">
+                      <option  ng-repeat="item in legendItems" value="{{item.name}}">{{item.name}}</option>
+                  </select>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-2">
+              <label for="optionSetForCommentsList">Aggregation level</label>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+
+              <div class="form-group">
+                      <input type="checkbox" ng-model="checked">
+              </div>
+              <div class="check-element animate-show" ng-show="checked">
+              <label class="checkbox-inline">
+                  <input type="checkbox" id="nationalCheckbox" value="1"> National
+              </label>
+              <label class="checkbox-inline">
+                  <input type="checkbox" id="districtCheckbox" value="2"> District
+              </label>
+              <label class="checkbox-inline">
+                  <input type="checkbox" id="chiefdomCheckbox" value="3"> Chiefdom
+              </label>
+                  <label class="checkbox-inline">
+                      <input type="checkbox" id="facilityCheckbox" value="4"> Facility
+                  </label>
+              </div>
+          </div>
+      </div>
+
+
+ <!--     Click me: <input type="checkbox" ng-model="checked"><br/>
+      <div>
+          Show:
+          <div class="check-element animate-show" ng-show="checked">
+              <span class="glyphicon glyphicon-thumbs-up"></span> I show up when your checkbox is checked.
+          </div>
+      </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br>
 <div class="row">
   <div class="col-xs-3 col-sm-1">

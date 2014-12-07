@@ -15,6 +15,17 @@
  		'callback' : 'JSON_CALLBACK'
  	},
  	{
+        retrieveLegends:
+        {
+
+             'method' : 'JSONP',
+             'params' :
+         {
+             'format' : 'jsonp',
+             'endPointAdr' : 'mapLegendSets',
+             'page' : '@page'
+         }
+        },
         retrieveOptions:
         {
             'method' : 'JSONP',
@@ -32,8 +43,8 @@
              'params' :
          {
              'format' : 'jsonp',
-             'endPointAdr' : 'categoryCombos'
-
+             'endPointAdr' : 'categoryCombos',
+             'page' : '@page'
          }
         },
         retrieveDetails:
