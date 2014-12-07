@@ -2,7 +2,6 @@ var app = angular.module('myApp', [
   'app.controllers',
   'app.services',
   'ngRoute',
-   'ngAnimate'
   ]);
 
 

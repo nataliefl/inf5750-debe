@@ -23,7 +23,7 @@
          {
              'format' : 'jsonp',
              'endPointAdr' : 'mapLegendSets',
-             'page' : '@page'
+             'paging' : 'false'
          }
         },
         retrieveOptions:
@@ -33,7 +33,7 @@
             {
                 'format' : 'jsonp',
                 'endPointAdr' : 'optionSets',
-                'page' : '@page'
+                'paging' : 'false'
             }
 
         },
@@ -44,7 +44,7 @@
          {
              'format' : 'jsonp',
              'endPointAdr' : 'categoryCombos',
-             'page' : '@page'
+             'paging' : 'false'
          }
         },
         retrieveDetails:
