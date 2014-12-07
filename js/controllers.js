@@ -30,7 +30,7 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
     getPage($scope.currentPage + 1);
   };
 
-  $scope.prevPage = function (){    
+  $scope.prevPage = function (){
     getPage($scope.currentPage - 1);
   };
 
@@ -45,6 +45,31 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
           $scope.shortNameInput=$scope.openedItem.shortName;
           $scope.codeInput=$scope.openedItem.code;
           $scope.descriptionTextArea=$scope.openedItem.description;
+          $scope.domainTypeSelector=$scope.openedItem.domainType;
+          $scope.valueTypeList=$scope.openedItem.type;
+          if($scope.openedItem.numberType!=null)
+          {
+              $scope.numberType=$scope.openedItem.numberType;
+          }
+          else
+          {
+              $scope.numberType=$scope.openedItem.textType;
+
+          }
+          $scope.aggregationOperatorList=$scope.openedItem.aggregationOperator;
+          $scope.storeZeroDataValuesList=$scope.openedItem.zeroIsSignificant;
+          $scope.urlInput=$scope.openedItem.url;
+          $scope.categoryCombinationList=$scope.openedItem.categoryCombo.name;
+          $scope.optionSetForDataValuesList=$scope.openedItem.optionSet.name;
+          $scope.optionSetForCommentsList=$scope.openedItem.commentOptionSet.name;
+          $scope.legendSetsList=$scope.openedItem.legendSet.name;
+          /*if($scope.openedItem.legendSet.name indexOf)*/
+          $scope.nationalCheckbox=($scope.openedItem.aggregationLevels.indexOf(1)>=0)?true:false;
+          $scope.districtCheckbox=($scope.openedItem.aggregationLevels.indexOf(2)>=0)?true:false;
+          $scope.chiefdomCheckbox=($scope.openedItem.aggregationLevels.indexOf(3)>=0)?true:false;
+          $scope.facilityCheckbox=($scope.openedItem.aggregationLevels.indexOf(4)>=0)?true:false;
+          $scope.rationaleInput=$scope.openedItem.attributeValues[0].value;
+          $scope.unitMeasureInput=$scope.openedItem.attributeValues[1].value;
       });
   };
   function getPage (page){
