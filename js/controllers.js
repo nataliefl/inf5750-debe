@@ -9,20 +9,41 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
   pageInit();
   function pageInit(){
       getPage(1);
-      DataElements.retrieveCategories().$promise.then(function(data){
+      DataElements.retrieveCategories(/*{'page': 1}*/).$promise.then(function(data){
           $scope.categoryItems=data.categoryCombos;
-
+ /*         if(data.pager.pageCount>1)
+          {
+              for(i=2;i<=data.pager.pageCount;i++)
+                  DataElements.retrieveCategories({'page': i}).$promise.then(function(data){
+                      var temp=$scope.categoryItems.concat(data.categoryCombos);
+                      $scope.categoryItems=temp;
+                  });
+          }*/
       });
 
-      DataElements.retrieveOptions().$promise.then(function(data){
+      DataElements.retrieveOptions(/*{'page': 1}*/).$promise.then(function(data){
           $scope.optionItems=data.optionSets;
-
+/*          if(data.pager.pageCount>1)
+          {
+              for(i=2;i<=data.pager.pageCount;i++)
+                  DataElements.retrieveOptions({'page': i}).$promise.then(function(data){
+                      var temp=$scope.optionItems.concat(data.optionSets);
+                      $scope.optionItems=temp;
+                  });
+          }*/
       });
 
 
-      DataElements.retrieveLegends().$promise.then(function(data){
+      DataElements.retrieveLegends(/*{'page': 1}*/).$promise.then(function(data){
           $scope.legendItems=data.mapLegendSets;
-
+/*          if(data.pager.pageCount>1)
+          {
+              for(i=2;i<=data.pager.pageCount;i++)
+                  DataElements.retrieveLegends({'page': i}).$promise.then(function(data){
+                      var temp=$scope.legendItems.concat(data.mapLegendSets);
+                      $scope.legendItems=temp;
+                  });
+          }*/
       });
 
   }

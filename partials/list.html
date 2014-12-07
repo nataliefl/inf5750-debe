@@ -32,7 +32,7 @@
         </div>
       </div>
 
-<!--      <div class="col-xs-12 col-sm-2">
+      <div class="col-xs-12 col-sm-2">
         <div class="input-group">
           <input type="text" class="form-control" ng-model="pageRowCount">
           <span class="input-group-btn">
@@ -40,7 +40,7 @@
           </span>
         </div>
 
-      </div>-->
+      </div>
 
     </div>
 
@@ -61,142 +61,143 @@
 
     </accordion-heading>
 
-    <!--INSIDE-->
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        <label for="nameInput">Name</label>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-        <input type="text" class="form-control" id="nameInput" value="{{ openedItem.name }}">
+    <div ng-if="element.open">
+      <!--INSIDE-->
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="nameInput">Name</label>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="form-group">
+            <input type="text" class="form-control" id="nameInput" value="{{ openedItem.name }}">
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        <label for="shortNameInput">Short Name</label>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-          <input type="text" class="form-control" id="shortNameInput" value="{{openedItem.shortName}}">
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="shortNameInput">Short Name</label>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="form-group">
+            <input type="text" class="form-control" id="shortNameInput" value="{{openedItem.shortName}}">
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        <label for="codeInput">Code</label>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-          <input type="text" class="form-control" id="codeInput" value="{{openedItem.code}}">
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="codeInput">Code</label>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="form-group">
+            <input type="text" class="form-control" id="codeInput" value="{{openedItem.code}}">
+          </div>
         </div>
       </div>
-    </div>
 
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        <label for="descriptionTextArea">Description</label>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-          <textarea rows="3" class="form-control" id="descriptionTextArea">
-          </textarea>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="descriptionTextArea">Description</label>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="form-group">
+            <textarea rows="3" class="form-control" id="descriptionTextArea">
+            </textarea>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        <label for="domainTypeSelector">Domain Type</label>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-          <select class="form-control"  id="domainTypeSelector">
-            <option value="AGGREGATE">Aggregate</option>
-            <option value="TRACKER">Tracker</option>
-          </select>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="domainTypeSelector">Domain Type</label>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="form-group">
+            <select class="form-control"  id="domainTypeSelector">
+              <option value="AGGREGATE">Aggregate</option>
+              <option value="TRACKER">Tracker</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        <label for="valueTypeList">Value Type</label>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="valueTypeList">Value Type</label>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="form-group">
+            <select class="form-control" id="valueTypeList">
+              <option value="Number">Number</option>
+              <option value="Text">Text</option>
+              <option value="Yes/No">Yes/No</option>
+              <option value="Yes Only">Yes Only</option>
+              <option value="Date">Date</option>
+              <option value="User Name">User Name</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="col-xs-12 col-sm-4">
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+         <label for="numberType">Number Type</label>
+       </div>
+       <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-          <select class="form-control" id="valueTypeList">
+          <select class="form-control"  id="numberType">
             <option value="Number">Number</option>
-            <option value="Text">Text</option>
-            <option value="Yes/No">Yes/No</option>
-            <option value="Yes Only">Yes Only</option>
-            <option value="Date">Date</option>
-            <option value="User Name">User Name</option>
+            <option value="Integer">Integer</option>
+            <option value="Positive Integer">Positive Integer</option>
+            <option value="Negative Integer">Negative Integer</option>
+            <option value="Unit Interval">Unit Interval</option>
+            <option value="Percentage">Percentage</option>
           </select>
         </div>
       </div>
     </div>
+
     <div class="row">
       <div class="col-xs-12 col-sm-2">
-       <label for="numberType">Number Type</label>
-     </div>
-     <div class="col-xs-12 col-sm-4">
-      <div class="form-group">
-        <select class="form-control"  id="numberType">
-          <option value="Number">Number</option>
-          <option value="Integer">Integer</option>
-          <option value="Positive Integer">Positive Integer</option>
-          <option value="Negative Integer">Negative Integer</option>
-          <option value="Unit Interval">Unit Interval</option>
-          <option value="Percentage">Percentage</option>
-        </select>
+        <label for="aggregationOperatorList">Aggregation Operator</label>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="form-group">
+          <select class="form-control"  id="aggregationOperatorList">
+            <option value="Sum">Sum</option>
+            <option value="Average">Average</option>
+            <option value="Count">Count</option>
+            <option value="Standard Deviation">Standard Deviation</option>
+            <option value="Variance">Variance</option>
+            <option value="Min">Min</option>
+            <option value="Max">Max</option>
+          </select>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-2">
-      <label for="aggregationOperatorList">Aggregation Operator</label>
+    <div class="row">
+     <div class="col-xs-12 col-sm-2">
+      <label for="storeZeroDataValuesList">Store zero data values</label>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="form-group">
-        <select class="form-control"  id="aggregationOperatorList">
-          <option value="Sum">Sum</option>
-          <option value="Average">Average</option>
-          <option value="Count">Count</option>
-          <option value="Standard Deviation">Standard Deviation</option>
-          <option value="Variance">Variance</option>
-          <option value="Min">Min</option>
-          <option value="Max">Max</option>
+        <select class="form-control"  id="storeZeroDataValuesList">
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
         </select>
       </div>
     </div>
   </div>
-
   <div class="row">
    <div class="col-xs-12 col-sm-2">
-    <label for="storeZeroDataValuesList">Store zero data values</label>
+    <label for="urlInput">URL</label>
   </div>
   <div class="col-xs-12 col-sm-4">
     <div class="form-group">
-      <select class="form-control"  id="storeZeroDataValuesList">
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-      </select>
+      <input type="url" class="form-control" id="urlInput">
     </div>
   </div>
-</div>
-<div class="row">
- <div class="col-xs-12 col-sm-2">
-  <label for="urlInput">URL</label>
-</div>
-<div class="col-xs-12 col-sm-4">
-  <div class="form-group">
-    <input type="url" class="form-control" id="urlInput">
-  </div>
-</div>
 </div>
 <div class="row">
   <div class="col-xs-12 col-sm-2">
@@ -319,7 +320,7 @@
 </div>
 
 <!--END INSIDE-->
-
+</div>
 </accordion-group>
 </accordion>
 </div>
