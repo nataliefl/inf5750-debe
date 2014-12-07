@@ -23,9 +23,26 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
 
   $scope.getDetails=function(id){
       DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
-          $scope.OpenedItem = data;
+          $scope.openedItem = data;
       });
-  }
+      DataElements.retrieveCategories().$promise.then(function(data){
+          $scope.categoryItems=data.categoryCombos;
+      });
+
+      DataElements.retrieveOptions({'page': 1}).$promise.then(function(data){
+          $scope.optionItems=data.optionSets;
+          if(data.pager.pageCount>1)
+          {
+              for(i=2;i<=data.pager.pageCount;i++)
+              DataElements.retrieveOptions({'page': i}).$promise.then(function(data){
+                  var temp=$scope.optionItems.concat(data.optionSets);
+                  $scope.optionItems=temp;
+              });
+          }
+      });
+  };
+
+
 
   function getPage (page){
     

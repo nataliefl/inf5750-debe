@@ -13,8 +13,29 @@
  	{
  		'endPointAdr': 'dataElements', 
  		'callback' : 'JSON_CALLBACK'
- 	}, 
+ 	},
  	{
+        retrieveOptions:
+        {
+            'method' : 'JSONP',
+            'params' :
+            {
+                'format' : 'jsonp',
+                'endPointAdr' : 'optionSets',
+                'page' : '@page'
+            }
+
+        },
+        retrieveCategories:
+        {
+             'method' : 'JSONP',
+             'params' :
+         {
+             'format' : 'jsonp',
+             'endPointAdr' : 'categoryCombos'
+
+         }
+        },
         retrieveDetails:
         {
             'method' : 'JSONP',

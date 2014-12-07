@@ -57,7 +57,7 @@
     <accordion close-others="true">
       <accordion-group heading="{{element.name}}" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
       <accordion-heading>
-      {{element.name}}
+      <a ng-click="getDetails(element.id)">{{element.name}}</a>
 
     </accordion-heading>
 
@@ -66,13 +66,13 @@
       <div class="col-xs-12 col-sm-3">
         <div class="form-group">
           <label for="nameInput">Name</label>
-          <input type="text" class="form-control" id="nameInput" required>
+          <input type="text" class="form-control" id="nameInput" value="{{openedItem.name}}" required>
         </div>
       </div>
       <div class="col-xs-12 col-sm-3">
         <div class="form-group">
           <label for="shortNameInput">Short Name</label>
-          <input type="text" class="form-control" id="shortNameInput">
+          <input type="text" class="form-control" id="shortNameInput" value="{{openedItem.shortName}}">
         </div>
       </div>
     </div>
@@ -81,22 +81,23 @@
       <div class="col-xs-12 col-sm-3">
         <div class="form-group">
           <label for="codeInput">Code</label>
-          <input type="text" class="form-control" id="codeInput">
+          <input type="text" class="form-control" id="codeInput" value="{{openedItem.code}}">
         </div>
       </div>
-      <div class="col-xs-12 col-sm-3">
+<!--      <div class="col-xs-12 col-sm-3">
         <div class="form-group">
           <label for="inputNameInput">Input Name</label>
           <input type="text" class="form-control" id="inputNameInput">
         </div>
       </div>
-    </div>
+    </div>-->
 
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="form-group">
           <label for="descriptionTextArea">Description</label>
           <textarea rows="3" class="form-control" id="descriptionTextArea" placeholder="Describe the case">
+              {{optionItems}}
           </textarea>
         </div>
       </div>
@@ -109,8 +110,8 @@
       <div class="col-xs-12 col-sm-4">
         <div class="form-group">
           <select class="form-control"  id="domainTypeSelector">
-            <option value="Aggregate">Aggregate</option>
-            <option value="Tracker">Tracker</option>
+            <option value="AGGREGATE">Aggregate</option>
+            <option value="TRACKER">Tracker</option>
           </select>
         </div>
       </div>
@@ -200,7 +201,8 @@
 
     <div class="form-group">
       <select class="form-control" id="categoryCombinationList">
-        <option value="‌Births">‌Births</option>
+          <option  ng-repeat="item in categoryItems" value="{{item.name}}">{{item.name}}</option>
+          <!--        <option value="‌Births">‌Births</option>
         <option value="Commodities">Commodities</option>
         <option value="default">default</option>
         <option value="Fixed/Outreach">Fixed/Outreach</option>
@@ -211,7 +213,7 @@
         <option value="Maternal deaths">Maternal deaths</option>
         <option value="Morbidity deaths">Morbidity deaths</option>
         <option value="Morbidity Referrals">Morbidity Referrals</option>
-        <option value="Pregnancy complications">Pregnancy complications</option>
+        <option value="Pregnancy complications">Pregnancy complications</option>-->
       </select>
     </div>
   </div>
