@@ -57,7 +57,15 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
 
           }
           $scope.aggregationOperatorList=$scope.openedItem.aggregationOperator;
-          $scope.storeZeroDataValuesList=$scope.openedItem.zeroIsSignificant;
+          //$scope.storeZeroDataValuesList=$scope.openedItem.zeroIsSignificant;
+          if($scope.openedItem.zeroIsSignificant==true)
+          {
+              $scope.storeZeroDataValuesList="true";
+          }
+          else
+          {
+              $scope.storeZeroDataValuesList="false";
+          }
           $scope.urlInput=$scope.openedItem.url;
           $scope.categoryCombinationList=$scope.openedItem.categoryCombo.name;
           $scope.optionSetForDataValuesList=$scope.openedItem.optionSet.name;
