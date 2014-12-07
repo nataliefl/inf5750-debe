@@ -8,21 +8,21 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
 
   pageInit();
   function pageInit(){
-      getPage(1);
+    getPage(1);
 
 
-      DataElements.retrieveCategories().$promise.then(function(data){
-          $scope.categoryItems=data.categoryCombos;
-      });
+    DataElements.retrieveCategories().$promise.then(function(data){
+      $scope.categoryItems=data.categoryCombos;
+    });
 
-      DataElements.retrieveOptions().$promise.then(function(data){
-          $scope.optionItems=data.optionSets;
-      });
+    DataElements.retrieveOptions().$promise.then(function(data){
+      $scope.optionItems=data.optionSets;
+    });
 
 
-      DataElements.retrieveLegends().$promise.then(function(data){
-          $scope.legendItems=data.mapLegendSets;
-      });
+    DataElements.retrieveLegends().$promise.then(function(data){
+      $scope.legendItems=data.mapLegendSets;
+    });
 
   }
 
@@ -36,6 +36,10 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
 
   $scope.delete=function(id)
   {
+    // $httpProvider.defaults.headers.put['Content-Type'] = 'application/json';
+    //$resource header customization is malfunctioning. This is a workaround to prevent OPTIONS preflight on DELETE requests
+    //TODO : Replace with $resource fix
+    // $http.delete('api/dataElements/'+id);
     DataElements.delete({'id' : id});
   };
 
@@ -46,9 +50,9 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
   };
 
   $scope.getDetails=function(id){
-      DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
-          $scope.openedItem = data;
-      });
+    DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
+      $scope.openedItem = data;
+    });
 /*      DataElements.retrieveCategories({'page': 1}).$promise.then(function(data){
           $scope.categoryItems=data.categoryCombos;
           if(data.pager.pageCount>1)
@@ -71,27 +75,27 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
                   $scope.optionItems=temp;
               });
           }
-      });*/
-  };
+        });*/
+};
 
 
 
-  function getPage (page){
-    
-    var pageCount = $scope.pageCount;
-    
-    if(page > pageCount)
-      page = 1;
-    else if(page <= 0)
-      page = pageCount;
+function getPage (page){
 
-    DataElements.get({'page': page}).$promise.then(function(data){
-      $scope.data = data;
-      $scope.currentPage = data.pager.page;
-      $scope.pageCount = data.pager.pageCount;
-    });
+  var pageCount = $scope.pageCount;
 
-  }
+  if(page > pageCount)
+    page = 1;
+  else if(page <= 0)
+    page = pageCount;
+
+  DataElements.get({'page': page}).$promise.then(function(data){
+    $scope.data = data;
+    $scope.currentPage = data.pager.page;
+    $scope.pageCount = data.pager.pageCount;
+  });
+
+}
 
 }]).
 

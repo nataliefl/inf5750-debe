@@ -96,7 +96,6 @@
         </div>
       </div>
 
-
       <div class="row">
         <div class="col-xs-12 col-sm-2">
           <label for="descriptionTextArea">Description</label>
@@ -121,6 +120,7 @@
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-xs-12 col-sm-2">
           <label for="valueTypeList">Value Type</label>
@@ -138,6 +138,7 @@
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-xs-12 col-sm-2">
          <label for="numberType">Number Type</label>
@@ -154,22 +155,35 @@
           </select>
         </div>
       </div>
-    </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-2">
+          <label for="aggregationOperatorList">Aggregation Operator</label>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <div class="form-group">
+            <select class="form-control"  id="aggregationOperatorList">
+              <option value="Sum">Sum</option>
+              <option value="Average">Average</option>
+              <option value="Count">Count</option>
+              <option value="Standard Deviation">Standard Deviation</option>
+              <option value="Variance">Variance</option>
+              <option value="Min">Min</option>
+              <option value="Max">Max</option>
+            </select>
+          </div>
+        </div>
+      </div>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-2">
-        <label for="aggregationOperatorList">Aggregation Operator</label>
+      <div class="row">
+       <div class="col-xs-12 col-sm-2">
+        <label for="storeZeroDataValuesList">Store zero data values</label>
       </div>
       <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-          <select class="form-control"  id="aggregationOperatorList">
-            <option value="Sum">Sum</option>
-            <option value="Average">Average</option>
-            <option value="Count">Count</option>
-            <option value="Standard Deviation">Standard Deviation</option>
-            <option value="Variance">Variance</option>
-            <option value="Min">Min</option>
-            <option value="Max">Max</option>
+          <select class="form-control"  id="storeZeroDataValuesList">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
           </select>
         </div>
       </div>
@@ -177,93 +191,80 @@
 
     <div class="row">
      <div class="col-xs-12 col-sm-2">
-      <label for="storeZeroDataValuesList">Store zero data values</label>
+      <label for="urlInput">URL</label>
     </div>
     <div class="col-xs-12 col-sm-4">
       <div class="form-group">
-        <select class="form-control"  id="storeZeroDataValuesList">
-          <option value="Yes">Yes</option>
-          <option value="No">No</option>
+        <input type="url" class="form-control" id="urlInput">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+      <label for="categoryCombinationList">Category Combination</label>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+
+      <div class="form-group">
+        <select class="form-control" id="categoryCombinationList">     
+          <option  ng-if="openedItem.categoryCombo.name" value="openedItem.categoryCombo.name" selected="selected">{{openedItem.categoryCombo.name}}</option>
+          <option  ng-if="!openedItem.categoryCombo.name" value="0" selected="selected">[Please Select]</option>
+          <option  ng-if="item.id != openedItem.categoryCombo.id" ng-repeat="item in categoryItems" value="{{::item.name}}">{{item.name}}</option>
         </select>
       </div>
     </div>
   </div>
+
   <div class="row">
-   <div class="col-xs-12 col-sm-2">
-    <label for="urlInput">URL</label>
-  </div>
-  <div class="col-xs-12 col-sm-4">
-    <div class="form-group">
-      <input type="url" class="form-control" id="urlInput">
+    <div class="col-xs-12 col-sm-2">
+      <label for="optionSetForDataValuesList">Option set for data values</label>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+
+      <div class="form-group">
+        <select class="form-control" id="optionSetForDataValuesList">
+          <option  ng-if="openedItem.optionSet.name" value="openedItem.optionSet.name" selected="selected">{{openedItem.optionSet.name}}</option>
+          <option  ng-if="!openedItem.optionSet.name" value="0" selected="selected">[Please select]</option>
+          <option  ng-if="item.id != openedItem.optionSet.id" ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
+        </select>
+      </div>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12 col-sm-2">
-    <label for="categoryCombinationList">Category Combination</label>
-  </div>
-  <div class="col-xs-12 col-sm-4">
 
-    <div class="form-group">
-      <select class="form-control" id="categoryCombinationList">     
-        <option  ng-if="openedItem.categoryCombo.name" value="openedItem.categoryCombo.name" selected="selected">{{openedItem.categoryCombo.name}}</option>
-        <option  ng-if="!openedItem.categoryCombo.name" value="0" selected="selected">[Please Select]</option>
-        <option  ng-if="item.id != openedItem.categoryCombo.id" ng-repeat="item in categoryItems" value="{{::item.name}}">{{item.name}}</option>
-      </select>
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+      <label for="optionSetForCommentsList">Option set for comments</label>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+
+      <div class="form-group">
+        <select class="form-control" id="optionSetForCommentsList">
+          <option  ng-if="openedItem.commentOptionSet.name" value="openedItem.commentOptionSet.name" selected="selected">{{openedItem.commentOptionSet.name}}</option>
+          <option  ng-if="!openedItem.commentOptionSet.name" value="0" selected="selected">[Please select]</option>
+          <option  ng-if="item.id != openedItem.commentOptionSet.id" ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
+        </select>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12 col-sm-2">
-    <label for="optionSetForDataValuesList">Option set for data values</label>
-  </div>
-  <div class="col-xs-12 col-sm-4">
-
-    <div class="form-group">
-      <select class="form-control" id="optionSetForDataValuesList">
-        <option  ng-if="openedItem.optionSet.name" value="openedItem.optionSet.name" selected="selected">{{openedItem.optionSet.name}}</option>
-        <option  ng-if="!openedItem.optionSet.name" value="0" selected="selected">[Please select]</option>
-        <option  ng-if="item.id != openedItem.optionSet.id" ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
-      </select>
+  <div class="row">
+    <div class="col-xs-12 col-sm-2">
+      <label for="legendSetsList">Legend set</label>
     </div>
-  </div>
-</div>
+    <div class="col-xs-12 col-sm-4">
 
-<div class="row">
-  <div class="col-xs-12 col-sm-2">
-    <label for="optionSetForCommentsList">Option set for comments</label>
-  </div>
-  <div class="col-xs-12 col-sm-4">
-
-    <div class="form-group">
-      <select class="form-control" id="optionSetForCommentsList">
-        <option  ng-if="openedItem.commentOptionSet.name" value="openedItem.commentOptionSet.name" selected="selected">{{openedItem.commentOptionSet.name}}</option>
-        <option  ng-if="!openedItem.commentOptionSet.name" value="0" selected="selected">[Please select]</option>
-        <option  ng-if="item.id != openedItem.commentOptionSet.id" ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
-      </select>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12 col-sm-2">
-    <label for="legendSetsList">Legend set</label>
-  </div>
-  <div class="col-xs-12 col-sm-4">
-
-    <div class="form-group">
-      <select class="form-control" id="legendSetsList">
-       <option  ng-if="openedItem.legendSet.name" value="openedItem.legendSet.name" selected="selected">{{openedItem.legendSet.name}}</option>
-       <option  ng-if="!openedItem.legendSet.name" value="0" selected="selected">[Please select]</option>
-       <option  ng-if="openedItem.legendSet.id != item.id" ng-repeat="item in legendItems" value="{{::item.name}}">{{item.name}}</option>
-     </select>
+      <div class="form-group">
+        <select class="form-control" id="legendSetsList">
+         <option  ng-if="openedItem.legendSet.name" value="openedItem.legendSet.name" selected="selected">{{openedItem.legendSet.name}}</option>
+         <option  ng-if="!openedItem.legendSet.name" value="0" selected="selected">[Please select]</option>
+         <option  ng-if="openedItem.legendSet.id != item.id" ng-repeat="item in legendItems" value="{{::item.name}}">{{item.name}}</option>
+       </select>
+     </div>
    </div>
  </div>
-</div>
 
-
-<div class="row">
+ <div class="row">
   <div class="col-xs-12 col-sm-2">
     <label for="optionSetForCommentsList">Aggregation level</label>
   </div>
@@ -296,6 +297,7 @@
    </div>
  </div>
 </div>
+
 <div class="row">
   <div class="col-xs-12 col-sm-2">
     <label for="measureInput">Unit of measure</label>
@@ -306,9 +308,9 @@
    </div>
  </div>
 </div>
- <br>
+<br>
 
- <div class="row">
+<div class="row">
   <div class="col-xs-3 col-sm-1">
     <button type="submit" ng-click="save(element.id)" class="btn btn-default">Save</button>
   </div>
@@ -317,7 +319,7 @@
   </div>
   <div class="col-xs-3 col-xs-offset-3 col-sm-1">
     <div class="pull-right btn-group">
-      <button class="btn btn-danger" ng-click="$event.stopPropagation();">Delete</button>
+      <button class="btn btn-danger" ng-click="delete(element.id)">Delete</button>
     </div>
   </div>
 

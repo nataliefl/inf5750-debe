@@ -28,8 +28,5 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     controller: 'DetailsController'
   }).
   otherwise({'redirectTo':'/'});
-  
-
-
 
 }]);
