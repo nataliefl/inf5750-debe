@@ -65,6 +65,10 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
       getPage($scope.currentPage);
     };
 
+  /* 
+   * Get page details
+   * @Param id Id of page.
+  */
     $scope.getDetails=function(id){
       DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
         $scope.openedItem = data;
@@ -132,6 +136,11 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
 
           });
 };
+
+ /* 
+   * Get a page
+   * @Param page Id of page.
+  */
 function getPage (page){
 
   var pageCount = $scope.pageCount;
