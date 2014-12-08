@@ -56,6 +56,7 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
       $scope.newData.attributeValues[0].value=rationale;
       $scope.newData.attributeValues[1].value=unitMeasure;
       DataElements.save($scope.newData);
+      getPage($scope.currentPage);
   };
 
   $scope.getDetails=function(id){
