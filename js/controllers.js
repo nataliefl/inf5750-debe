@@ -1,93 +1,99 @@
-//Depedencies listed in array. In addition to angular objects 'ng..' we also add our own modules e.g. 'DataElements'
-//var controllers = angular.module('Controllers', ['ngAnimate', 'DataElements']);
-
-//Controller attached to list.html view
-//NB: Note the order of dependencies and the the consequent identical order of parameters in the function
+/*
+ * List Controller module
+ */
 angular.module('app.controllers',['app.services', 'ui.bootstrap']).
 controller('ListController', ['$scope','DataElements', '$location' , '$routeParams', function($scope, DataElements, $location, $routeParams) {
-  pageInit();
-  function pageInit(){
-      getPage(1);
+
+    getPage(1);
+
+    DataElements.retrieveCategories().$promise.then(function(data){
+      $scope.categoryItems=data.categoryCombos;
+    });
+
+    DataElements.retrieveOptions().$promise.then(function(data){
+      $scope.optionItems=data.optionSets;
+    });
 
 
-      DataElements.retrieveCategories().$promise.then(function(data){
-          $scope.categoryItems=data.categoryCombos;
-      });
+    DataElements.retrieveLegends().$promise.then(function(data){
+      $scope.legendItems=data.mapLegendSets;
+    });
 
-      DataElements.retrieveOptions().$promise.then(function(data){
-          $scope.optionItems=data.optionSets;
-      });
-
-
-      DataElements.retrieveLegends().$promise.then(function(data){
-          $scope.legendItems=data.mapLegendSets;
-      });
-
-  }
-
+  /* 
+   * Get the next page. 
+  */
   $scope.nextPage = function (){
     getPage($scope.currentPage + 1);
   };
 
+  /* 
+   * Get the previous page.
+   *
+  */
   $scope.prevPage = function (){
     getPage($scope.currentPage - 1);
   };
 
+  /* 
+   * Delete a page
+   * @Param id Id of page.
+  */
   $scope.delete=function(id)
   {
     DataElements.delete({'id' : id});
   };
+
   $scope.save=function(name,shorName,code,description,domainType,valueType,numberType,aggregationOperator,
-        storeZeroDataValues,url,categoryCombination,optionSetForDataValues,optionSetForComments,legendSets,rationale,unitMeasure)
+    storeZeroDataValues,url,categoryCombination,optionSetForDataValues,optionSetForComments,legendSets,rationale,unitMeasure)
   {
-      $scope.newData.name=name;
-      $scope.newData.shortName=shorName;
-      $scope.newData.code=code;
-      $scope.newData.description=description;
-      $scope.newData.domainType=domainType;
-      $scope.newData.numberType=numberType;
-      $scope.newData.aggregationOperator=aggregationOperator;
-      $scope.newData.zeroIsSignificant=storeZeroDataValues;
-      $scope.newData.url=url;
-      $scope.newData.categoryCombo.name=categoryCombination;
-      $scope.newData.optionSet.name=optionSetForDataValues
-      $scope.newData.commentOptionSet.name=optionSetForComments;
+    $scope.newData.name=name;
+    $scope.newData.shortName=shorName;
+    $scope.newData.code=code;
+    $scope.newData.description=description;
+    $scope.newData.domainType=domainType;
+    $scope.newData.numberType=numberType;
+    $scope.newData.aggregationOperator=aggregationOperator;
+    $scope.newData.zeroIsSignificant=storeZeroDataValues;
+    $scope.newData.url=url;
+    $scope.newData.categoryCombo.name=categoryCombination;
+    $scope.newData.optionSet.name=optionSetForDataValues;
+    $scope.newData.commentOptionSet.name=optionSetForComments;
       //$scope.newData.legendSet=legendSets;
       $scope.newData.attributeValues[0].value=rationale;
       $scope.newData.attributeValues[1].value=unitMeasure;
       DataElements.save($scope.newData);
       getPage($scope.currentPage);
-  };
+    };
 
-  $scope.getDetails=function(id){
+    $scope.getDetails=function(id){
       DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
-          $scope.openedItem = data;
-          $scope.nameInput = $scope.openedItem.name;
-          $scope.shortNameInput=$scope.openedItem.shortName;
-          $scope.codeInput=$scope.openedItem.code;
-          $scope.descriptionTextArea=$scope.openedItem.description;
-          $scope.domainTypeSelector=$scope.openedItem.domainType;
-          $scope.valueTypeList=$scope.openedItem.type;
-          var textOrNumber;
-          if($scope.openedItem.numberType!=null)
-          {
-              $scope.numberType=$scope.openedItem.numberType;
-              textOrNumber="numberType";
-          }
-          else
-          {
-              $scope.numberType=$scope.openedItem.textType;
-              textOrNumber="textType";
-          }
-          $scope.aggregationOperatorList=$scope.openedItem.aggregationOperator;
+        $scope.openedItem = data;
+        $scope.nameInput = $scope.openedItem.name;
+        $scope.shortNameInput=$scope.openedItem.shortName;
+        $scope.codeInput=$scope.openedItem.code;
+        $scope.descriptionTextArea=$scope.openedItem.description;
+        $scope.domainTypeSelector=$scope.openedItem.domainType;
+        $scope.valueTypeList=$scope.openedItem.type;
+        var textOrNumber;
+        if($scope.openedItem.numberType!=null)
+        {
+          $scope.numberType=$scope.openedItem.numberType;
+          textOrNumber="numberType";
+        }
+        else
+        {
+          $scope.numberType=$scope.openedItem.textType;
+          textOrNumber="textType";
+        }
+        $scope.aggregationOperatorList=$scope.openedItem.aggregationOperator;
           //$scope.storeZeroDataValuesList=$scope.openedItem.zeroIsSignificant;
           if($scope.openedItem.zeroIsSignificant==true)
           {
-              $scope.storeZeroDataValuesList="true";
+            $scope.storeZeroDataValuesList="true";
           }
           else
           {
-              $scope.storeZeroDataValuesList="false";
+            $scope.storeZeroDataValuesList="false";
           }
           $scope.urlInput=$scope.openedItem.url;
           $scope.categoryCombinationList=$scope.openedItem.categoryCombo.name;
@@ -122,30 +128,28 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
                   {"value":$scope.rationaleInput},
                   {"value":$scope.unitMeasureInput}
               ]
-          }*/;
+            }*/;
 
-      });
-  };
-  function getPage (page){
+          });
+};
+function getPage (page){
 
-    var pageCount = $scope.pageCount;
+  var pageCount = $scope.pageCount;
 
-    if(page > pageCount)
-      page = 1;
-    else if(page <= 0)
-      page = pageCount;
+  if(page > pageCount)
+    page = 1;
+  else if(page <= 0)
+    page = pageCount;
 
-    DataElements.get({'page': page}).$promise.then(function(data){
-      $scope.data = data;
-      $scope.currentPage = data.pager.page;
-      $scope.pageCount = data.pager.pageCount;
-    });
+  DataElements.get({'page': page}).$promise.then(function(data){
+    $scope.data = data;
+    $scope.currentPage = data.pager.page;
+    $scope.pageCount = data.pager.pageCount;
+  });
 
-  }
+}
 
-}]).
-
-controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
+}]).controller('DetailsController', ['$scope', '$http','$routeParams', function($scope, $http, $routeParams) {
 
   $scope.elementID=$routeParams.id;
   console.log("Details Controller");
