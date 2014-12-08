@@ -20,41 +20,32 @@
           </span>
         </div>
     </div>
-
-    <div class="col-xs-3 col-sm-2">
+    </div>
+    <br>
+<div class="row">
+    <div class="col-xs-12 col-sm-2">
         <div class="btn-toolbar" role="toolbar" aria-label="...">
             <a class="  btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
-            <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
+             <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div>
     </div>
-
-    <!--      <div class="col-xs-12 col-sm-2">
-            <div class="input-group">
-              <input type="text" class="form-control" ng-model="pageRowCount">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Rows</button>
-              </span>
-            </div>
-
-          </div>-->
-
 </div>
 
 <br>
 
 <div class="row">
     <div class="col-xs-12">
-        <p ng-if="currentPage">
+        <p>
             Page {{currentPage}} of {{pageCount}}
         </p>
     </div>
 </div>
 
-<accordion close-others="true" ng-model="elementDetails">
+<accordion close-others="true">
 <accordion-group heading="{{element.name}}" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
 <accordion-heading>
     <a ng-click="getDetails(element.id)">{{element.name}}</a>
@@ -69,7 +60,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="nameInput" ng-model="elementDetails.name">
+            <input type="text" class="form-control" id="nameInput" ng-model="nameInput">
         </div>
     </div>
 </div>
@@ -264,7 +255,6 @@
     </div>
 </div>
 
-
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="optionSetForCommentsList">Aggregation level</label>
@@ -314,14 +304,18 @@
 
 <div class="row">
     <div class="col-xs-3 col-sm-1">
-        <button ng-click="save()" class="btn btn-default">Save</button>
+        <button ng-click="save(nameInput,shortNameInput,codeInput,descriptionTextArea,domainTypeSelector,
+                               valueTypeList,numberType,aggregationOperatorList,storeZeroDataValuesList,
+                               urlInput,categoryCombinationList,optionSetForDataValuesList,
+                               optionSetForCommentsList,legendSetsList,rationaleInput,unitMeasureInput)"
+        class="btn btn-default">Save</button>
     </div>
     <div class="col-xs-3 col-sm-1">
-       <!-- <button type="reset" class="btn btn-default">Reset</button> -->
+        <button type="reset" class="btn btn-default">Reset</button>
     </div>
     <div class="col-xs-3 col-xs-offset-3 col-sm-1">
         <div class="pull-right btn-group">
-            <button class="btn btn-danger" ng-click="$event.stopPropagation();">Delete</button>
+            <button class="btn btn-danger" ng-click="delete(element.id)">Delete</button>
         </div>
     </div>
 

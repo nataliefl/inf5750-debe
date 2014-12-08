@@ -6,7 +6,6 @@
 angular.module('app.controllers',['app.services', 'ui.bootstrap']).
 controller('ListController', ['$scope','DataElements', '$location' , '$routeParams', function($scope, DataElements, $location, $routeParams) {
   pageInit();
-
   function pageInit(){
       getPage(1);
 
@@ -38,17 +37,30 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
   {
     DataElements.delete({'id' : id});
   };
-
-  $scope.save = function(){
-
-console.log("test");
-    DataElements.save($scope.elementDetails);
+  $scope.save=function(name,shorName,code,description,domainType,valueType,numberType,aggregationOperator,
+        storeZeroDataValues,url,categoryCombination,optionSetForDataValues,optionSetForComments,legendSets,rationale,unitMeasure)
+  {
+      $scope.newData.name=name;
+      $scope.newData.shortName=shorName;
+      $scope.newData.code=code;
+      $scope.newData.description=description;
+      $scope.newData.domainType=domainType;
+      $scope.newData.numberType=numberType;
+      $scope.newData.aggregationOperator=aggregationOperator;
+      $scope.newData.zeroIsSignificant=storeZeroDataValues;
+      $scope.newData.url=url;
+      $scope.newData.categoryCombo.name=categoryCombination;
+      $scope.newData.optionSet.name=optionSetForDataValues
+      $scope.newData.commentOptionSet.name=optionSetForComments;
+      //$scope.newData.legendSet=legendSets;
+      $scope.newData.attributeValues[0].value=rationale;
+      $scope.newData.attributeValues[1].value=unitMeasure;
+      DataElements.save($scope.newData);
+      getPage($scope.currentPage);
   };
 
   $scope.getDetails=function(id){
       DataElements.retrieveDetails({'id' : id}).$promise.then(function(data){
-        $scope.elementDetails = data;
-
           $scope.openedItem = data;
           $scope.nameInput = $scope.openedItem.name;
           $scope.shortNameInput=$scope.openedItem.shortName;
@@ -56,14 +68,16 @@ console.log("test");
           $scope.descriptionTextArea=$scope.openedItem.description;
           $scope.domainTypeSelector=$scope.openedItem.domainType;
           $scope.valueTypeList=$scope.openedItem.type;
+          var textOrNumber;
           if($scope.openedItem.numberType!=null)
           {
               $scope.numberType=$scope.openedItem.numberType;
+              textOrNumber="numberType";
           }
           else
           {
               $scope.numberType=$scope.openedItem.textType;
-
+              textOrNumber="textType";
           }
           $scope.aggregationOperatorList=$scope.openedItem.aggregationOperator;
           //$scope.storeZeroDataValuesList=$scope.openedItem.zeroIsSignificant;
@@ -87,12 +101,35 @@ console.log("test");
           $scope.facilityCheckbox=($scope.openedItem.aggregationLevels.indexOf(4)>=0)?true:false;
           $scope.rationaleInput=$scope.openedItem.attributeValues[0].value;
           $scope.unitMeasureInput=$scope.openedItem.attributeValues[1].value;
+          $scope.newData=data;
+          /*var jsonObject={"id":id,
+              "name":$scope.nameInput,
+              "shortName":$scope.shortNameInput,
+              "code":$scope.codeInput,
+              "description":$scope.descriptionTextArea,
+              "domainType":$scope.domainTypeSelector,
+              "type":$scope.valueTypeList,
+              textOrNumber:$scope.numberType,
+              "aggregationOperator":$scope.aggregationOperatorList,
+              "zeroIsSignificant":$scope.storeZeroDataValuesList,
+              "url":$scope.urlInput,
+              "categoryCombo":{"name":$scope.categoryCombinationList},
+              "optionSet":{"name":$scope.optionSetForDataValuesList},
+              "commentOptionSet":{"name":$scope.optionSetForCommentsList},
+              "legendSet":
+              {"name":$scope.legendSetsList},
+              attributeValues:[
+                  {"value":$scope.rationaleInput},
+                  {"value":$scope.unitMeasureInput}
+              ]
+          }*/;
+
       });
   };
   function getPage (page){
-    
+
     var pageCount = $scope.pageCount;
-    
+
     if(page > pageCount)
       page = 1;
     else if(page <= 0)
