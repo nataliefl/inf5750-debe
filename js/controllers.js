@@ -39,7 +39,7 @@ angular.module('app.controllers',['app.services', 'ui.bootstrap']).
         $scope.delete=function(id)
         {
             DataElements.delete({'id' : id});
-            getPage($scope.currentPage);
+            location.reload();
         };
         $scope.save=function(JsonElement)
         {
@@ -53,9 +53,9 @@ angular.module('app.controllers',['app.services', 'ui.bootstrap']).
             $scope.newData.type=$scope.JsonElement.valueTypeList;
             $scope.newData.numberType=$scope.JsonElement.numberType;
 
-//            $scope.newData.aggregationOperator=$scope.JsonElement.aggregationOperatorList;
-//            $scope.newData.zeroIsSignificant=$scope.JsonElement.storeZeroDataValuesList;
-//            $scope.newData.url=$scope.JsonElement.urlInput;
+            $scope.newData.aggregationOperator=$scope.JsonElement.aggregationOperatorList;
+            $scope.newData.zeroIsSignificant=$scope.JsonElement.storeZeroDataValuesList;
+            $scope.newData.url=$scope.JsonElement.urlInput;
 //            $scope.newData.categoryCombo.name=$scope.JsonElement.categoryCombinationList;
 //            $scope.newData.optionSet.name=$scope.JsonElement.optionSetForDataValuesList;
 //            $scope.newData.commentOptionSet.name=$scope.JsonElement.optionSetForCommentsList;
@@ -100,16 +100,16 @@ angular.module('app.controllers',['app.services', 'ui.bootstrap']).
                 }
                 $scope.JsonElement.urlInput=$scope.openedItem.url;
                 $scope.JsonElement.categoryCombinationList=$scope.openedItem.categoryCombo.name;
-                $scope.JsonElement.optionSetForDataValuesList=$scope.openedItem.optionSet.name;
-                $scope.JsonElement.optionSetForCommentsList=$scope.openedItem.commentOptionSet.name;
-                $scope.JsonElement.legendSetsList=$scope.openedItem.legendSet.name;
+                $scope.JsonElement.optionSetForDataValuesList=($scope.openedItem.optionSet)?$scope.openedItem.optionSet.name:"";
+                $scope.JsonElement.optionSetForCommentsList=($scope.openedItem.commentOptionSet)?$scope.openedItem.commentOptionSet.name:"";
+                $scope.JsonElement.legendSetsList=($scope.openedItem.legendSet)?$scope.openedItem.legendSet.name:"";
                 /*if($scope.openedItem.legendSet.name indexOf)*/
                 $scope.JsonElement.nationalCheckbox=($scope.openedItem.aggregationLevels.indexOf(1)>=0)?true:false;
                 $scope.JsonElement.districtCheckbox=($scope.openedItem.aggregationLevels.indexOf(2)>=0)?true:false;
                 $scope.JsonElement.chiefdomCheckbox=($scope.openedItem.aggregationLevels.indexOf(3)>=0)?true:false;
                 $scope.JsonElement.facilityCheckbox=($scope.openedItem.aggregationLevels.indexOf(4)>=0)?true:false;
-                $scope.JsonElement.rationaleInput=($scope.openedItem.attributeValues[0].attribute.name=="Rationale")?$scope.openedItem.attributeValues[0].value:$scope.openedItem.attributeValues[1].value;
-                $scope.JsonElement.unitMeasureInput=($scope.openedItem.attributeValues[1].attribute.name=="Unit of measure")?$scope.openedItem.attributeValues[1].value:$scope.openedItem.attributeValues[0].value;
+                $scope.JsonElement.rationaleInput=($scope.openedItem.attributeValues[0])?($scope.openedItem.attributeValues[0].attribute.name=="Rationale")?$scope.openedItem.attributeValues[0].value:$scope.openedItem.attributeValues[1].value:"";
+                $scope.JsonElement.unitMeasureInput=($scope.openedItem.attributeValues[1])?($scope.openedItem.attributeValues[1].attribute.name=="Unit of measure")?$scope.openedItem.attributeValues[1].value:$scope.openedItem.attributeValues[0].value:"";
                 $scope.newData=data;
 
             });
