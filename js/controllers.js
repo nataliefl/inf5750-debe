@@ -1,5 +1,7 @@
 /*
- * List Controller module
+ * List Controller module. 
+ * Fetches data elements with all dependant data items from the server. 
+ * Updates the view.
  */
 angular.module('app.controllers',['app.services', 'ui.bootstrap']).
 controller('ListController', ['$scope','DataElements', '$location' , '$routeParams', function($scope, DataElements, $location, $routeParams) {
