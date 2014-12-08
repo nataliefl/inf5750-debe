@@ -18,9 +18,9 @@ angular.module('app.controllers',['app.services', 'ui.bootstrap']).
                 $scope.optionItems=data.optionSets;
             });
 
-      DataElements.retrieveOptions().$promise.then(function(data){
-          $scope.optionItems=data.optionSets;
-      });
+            DataElements.retrieveOptions().$promise.then(function(data){
+                $scope.optionItems=data.optionSets;
+            });
 
             DataElements.retrieveLegends().$promise.then(function(data){
                 $scope.legendItems=data.mapLegendSets;
@@ -43,24 +43,27 @@ angular.module('app.controllers',['app.services', 'ui.bootstrap']).
         };
         $scope.save=function(JsonElement)
         {
-            $scope.newData.name=JsonElement.nameInput;
-            $scope.newData.shortName=JsonElement.shortNameInput;
-            $scope.newData.code=JsonElement.codeInput;
-            $scope.newData.description=JsonElement.descriptionTextArea;
-            $scope.newData.domainType=JsonElement.domainTypeSelector;
-            $scope.newData.type=JsonElement.valueTypeList;
-            $scope.newData.numberType=JsonElement.numberType;
+            console.log($scope.JsonElement.nameInput);
+            console.log($scope.newData);
+            $scope.newData.name= $scope.JsonElement.nameInput;
+            $scope.newData.shortName=$scope.JsonElement.shortNameInput;
+            $scope.newData.code=$scope.JsonElement.codeInput;
+            $scope.newData.description=$scope.JsonElement.descriptionTextArea;
+            $scope.newData.domainType=$scope.JsonElement.domainTypeSelector;
+            $scope.newData.type=$scope.JsonElement.valueTypeList;
+            $scope.newData.numberType=$scope.JsonElement.numberType;
 
-            $scope.newData.aggregationOperator=JsonElement.aggregationOperatorList;
-            $scope.newData.zeroIsSignificant=JsonElement.storeZeroDataValuesList;
-            $scope.newData.url=JsonElement.urlInput;
-            $scope.newData.categoryCombo.name=JsonElement.categoryCombinationList;
-            $scope.newData.optionSet.name=optionSetForDataValuesList;
-            $scope.newData.commentOptionSet.name=optionSetForCommentsList;
-            $scope.newData.legendSet=JsonElement.legendSetsList;
-            $scope.newData.attributeValues[0].value=$scope.JsonElement.rationaleInput;
-            $scope.newData.attributeValues[1].value=$scope.JsonElement.unitMeasureInput;
-            DataElements.save($scope.newData);
+//            $scope.newData.aggregationOperator=$scope.JsonElement.aggregationOperatorList;
+//            $scope.newData.zeroIsSignificant=$scope.JsonElement.storeZeroDataValuesList;
+//            $scope.newData.url=$scope.JsonElement.urlInput;
+//            $scope.newData.categoryCombo.name=$scope.JsonElement.categoryCombinationList;
+//            $scope.newData.optionSet.name=$scope.JsonElement.optionSetForDataValuesList;
+//            $scope.newData.commentOptionSet.name=$scope.JsonElement.optionSetForCommentsList;
+//            $scope.newData.legendSet=$scope.JsonElement.legendSetsList;
+//            $scope.newData.attributeValues[0].value=$scope.JsonElement.rationaleInput;
+//            $scope.newData.attributeValues[1].value=$scope.JsonElement.unitMeasureInput;
+//            console.log($scope.newData);
+              DataElements.save($scope.newData);
             getPage($scope.currentPage);
         };
 
@@ -107,7 +110,7 @@ angular.module('app.controllers',['app.services', 'ui.bootstrap']).
                 $scope.JsonElement.facilityCheckbox=($scope.openedItem.aggregationLevels.indexOf(4)>=0)?true:false;
                 $scope.JsonElement.rationaleInput=($scope.openedItem.attributeValues[0].attribute.name=="Rationale")?$scope.openedItem.attributeValues[0].value:$scope.openedItem.attributeValues[1].value;
                 $scope.JsonElement.unitMeasureInput=($scope.openedItem.attributeValues[1].attribute.name=="Unit of measure")?$scope.openedItem.attributeValues[1].value:$scope.openedItem.attributeValues[0].value;
-                $scope.JsonElement.newData=data;
+                $scope.newData=data;
 
             });
         };
