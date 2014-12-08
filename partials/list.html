@@ -9,7 +9,7 @@
 </div>
 
 <br>
-
+    <!-- Filtering/searching in each page -->
 <div class="row">
 
     <div class="col-xs-12 col-sm-4 ">
@@ -22,7 +22,8 @@
     </div>
     </div>
     <br>
-<div class="row">
+    <!-- change pages prevPage/nextPage -->
+    <div class="row">
     <div class="col-xs-12 col-sm-2">
         <div class="btn-toolbar" role="toolbar" aria-label="...">
             <a class="  btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
@@ -44,12 +45,17 @@
         </p>
     </div>
 </div>
-
+    <!-- accordion  Starts -->
 <accordion close-others="true">
+<<<<<<< HEAD
 <accordion-group heading="element.name" ng-model="currentElement" ng-repeat="element in data.dataElements | filter : search" is-open="currentElement.open" >
 <accordion-heading>
+=======
+<accordion-group heading="{{element.name}}" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
+<!-- dynamic heading for accordions -->
+    <accordion-heading>
+>>>>>>> cb1cfb9b47f470baf434aca00836c6068f9d41ee
     <a ng-click="getDetails(element.id)">{{element.name}}</a>
-
 </accordion-heading>
 
 <div ng-if="currentElement.open">
@@ -112,6 +118,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="valueTypeList">Value Type</label>
@@ -129,6 +136,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="numberType">Number Type</label>
@@ -189,6 +197,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="urlInput">URL</label>
@@ -199,6 +208,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="categoryCombinationList">Category Combination</label>
@@ -218,7 +228,6 @@
         <label for="optionSetForDataValuesList">Option set for data values</label>
     </div>
     <div class="col-xs-12 col-sm-4">
-
         <div class="form-group">
             <select class="form-control" id="optionSetForDataValuesList" ng-model="optionSetForDataValuesList">
                 <option  ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
@@ -232,7 +241,6 @@
         <label for="optionSetForCommentsList">Option set for comments</label>
     </div>
     <div class="col-xs-12 col-sm-4">
-
         <div class="form-group">
             <select class="form-control" id="optionSetForCommentsList" ng-model="optionSetForCommentsList">
                 <option  ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
@@ -246,7 +254,6 @@
         <label for="legendSetsList">Legend set</label>
     </div>
     <div class="col-xs-12 col-sm-4">
-
         <div class="form-group">
             <select class="form-control" id="legendSetsList" ng-model="legendSetsList">
                 <option  ng-repeat="item in legendItems" value="{{::item.name}}">{{item.name}}</option>
@@ -260,7 +267,6 @@
         <label for="optionSetForCommentsList">Aggregation level</label>
     </div>
     <div class="col-xs-12 col-sm-4">
-
         <div class="check-element">
             <label class="checkbox-inline">
                 <input type="checkbox" id="nationalCheckbox" value="1" ng-model="nationalCheckbox"> National
@@ -301,7 +307,7 @@
 </div>
 
 <br>
-
+<!-- save/reset/delete button -->
 <div class="row">
     <div class="col-xs-3 col-sm-1">
         <button ng-click="save(nameInput,shortNameInput,codeInput,descriptionTextArea,domainTypeSelector,
