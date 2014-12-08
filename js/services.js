@@ -56,6 +56,12 @@
                 'id' : '@id'
             }
         },
+/*
+ * Talks to the DHIS REST api
+ *
+ * getJSONP : Update data
+ *
+ */
  		get : 
  		{
  			'method' : 'JSONP',  
@@ -65,7 +71,13 @@
  				'page' : '@page'
  			}
  		},
- 		delete : 
+ /*
+ * Talks to the DHIS REST api
+ *
+* deleteJSONP : delete data
+ *
+ */
+        delete :
  		{
  			'method' : 'DELETE',
  			'params' : 
@@ -73,6 +85,12 @@
  				'id' : '@id'
  			}
  		},
+ /*
+* Talks to the DHIS REST api
+ *
+ * putJSONP : Fetch JSONP data
+ *
+ */
         save :
         {
             'method' : 'PUT',
