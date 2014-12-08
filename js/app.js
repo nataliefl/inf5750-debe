@@ -5,7 +5,7 @@ var app = angular.module('myApp', [
   ]);
 
 
-//Initialize our app
+//Initialize our app, get the manifest
 app.run(['$rootScope', '$http', '$location',function($rootScope, $http, $location){
 
   var xhReq = new XMLHttpRequest();
@@ -15,6 +15,8 @@ app.run(['$rootScope', '$http', '$location',function($rootScope, $http, $locatio
     $rootScope.baseUrl = serverResponse.activities.dhis.href;
 
 }]);
+
+//Initialize our app configuration
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 
