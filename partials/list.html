@@ -32,15 +32,6 @@
         </div>
     </div>
 
-    <!--      <div class="col-xs-12 col-sm-2">
-            <div class="input-group">
-              <input type="text" class="form-control" ng-model="pageRowCount">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Rows</button>
-              </span>
-            </div>
-
-          </div>-->
 
 </div>
 
@@ -264,7 +255,6 @@
     </div>
 </div>
 
-
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="optionSetForCommentsList">Aggregation level</label>
@@ -314,7 +304,11 @@
 
 <div class="row">
     <div class="col-xs-3 col-sm-1">
-        <button type="submit" ng-click="save(element.id)" class="btn btn-default">Save</button>
+        <button ng-click="save(nameInput,shortNameInput,codeInput,descriptionTextArea,domainTypeSelector,
+                               valueTypeList,numberType,aggregationOperatorList,storeZeroDataValuesList,
+                               urlInput,categoryCombinationList,optionSetForDataValuesList,
+                               optionSetForCommentsList,legendSetsList,rationaleInput,unitMeasureInput)"
+        class="btn btn-default">Save</button>
     </div>
     <div class="col-xs-3 col-sm-1">
         <button type="reset" class="btn btn-default">Reset</button>
