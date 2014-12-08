@@ -9,7 +9,7 @@
 </div>
 
 <br>
-
+    <!-- Filtering/searching in each page -->
 <div class="row">
 
     <div class="col-xs-12 col-sm-4 ">
@@ -20,19 +20,20 @@
           </span>
         </div>
     </div>
-
-    <div class="col-xs-3 col-sm-2">
+    </div>
+    <br>
+    <!-- change pages prevPage/nextPage -->
+    <div class="row">
+    <div class="col-xs-12 col-sm-2">
         <div class="btn-toolbar" role="toolbar" aria-label="...">
-            <a class="btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
+            <a class="  btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
                 <span class="glyphicon glyphicon-chevron-left"></span>
             </a>
-            <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
+             <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </a>
         </div>
     </div>
-
-
 </div>
 
 <br>
@@ -44,12 +45,12 @@
         </p>
     </div>
 </div>
-
+    <!-- accordion  Starts -->
 <accordion close-others="true">
 <accordion-group heading="{{element.name}}" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
-<accordion-heading>
+<!-- dynamic heading for accordions -->
+    <accordion-heading>
     <a ng-click="getDetails(element.id)">{{element.name}}</a>
-
 </accordion-heading>
 
 <div ng-if="element.open">
@@ -301,7 +302,7 @@
 </div>
 
 <br>
-
+<!-- save/reset/delete button -->
 <div class="row">
     <div class="col-xs-3 col-sm-1">
 <!--        <button ng-click="save(nameInput,shortNameInput,codeInput,descriptionTextArea,domainTypeSelector,
