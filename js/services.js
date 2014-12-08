@@ -96,12 +96,12 @@
  				'page' : '@page'
  			}
  		},
- /*
- * Talks to the DHIS REST api
- *
+/*
+* Talks to the DHIS REST api
+*
 * delete : delete data
- *
- */
+*
+*/
         delete :
  		{
  			'method' : 'DELETE',
@@ -110,7 +110,7 @@
  				'id' : '@id'
  			}
  		},
- /*
+/*
 * Talks to the DHIS REST api
  *
  * save : Update data
