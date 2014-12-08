@@ -47,7 +47,7 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
       $scope.newData.code=(code)?code:"";
       $scope.newData.description=(description)?description:"";
       $scope.newData.domainType=(domainType)?domainType:"";
-      $scope.newData.numberType=(numberType)?numberType:"";
+      $scope.newData.numberType=($scope.textOrNumber)?$scope.textOrNumber:"";
       $scope.newData.aggregationOperator=(aggregationOperator)?aggregationOperator:"";
       $scope.newData.zeroIsSignificant=(storeZeroDataValues)?storeZeroDataValues:"";
       $scope.newData.url=(url)?url:"";
@@ -59,7 +59,7 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
       $scope.newData.attributeValues[1]=(unitMeasure)?{"value":unitMeasure}:{"value":""};
       DataElements.save($scope.newData);
       getPage($scope.currentPage);
-      location.reload();
+/*      location.reload();*/
   };
 
   $scope.getDetails=function(id){
@@ -75,12 +75,12 @@ controller('ListController', ['$scope','DataElements', '$location' , '$routePara
           if($scope.openedItem.numberType!=null)
           {
               $scope.numberType=($scope.openedItem.numberType)?$scope.openedItem.numberType:"";
-              textOrNumber="numberType";
+              $scope.textOrNumber="numberType";
           }
           else
           {
               $scope.numberType=($scope.openedItem.textType)?$scope.openedItem.textType:"";
-              textOrNumber="textType";
+              $scope.textOrNumber="textType";
           }
           $scope.aggregationOperatorList=($scope.openedItem.aggregationOperator)?$scope.openedItem.aggregationOperator:"";
           //$scope.storeZeroDataValuesList=$scope.openedItem.zeroIsSignificant;

@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="col-xs-3 col-sm-2">
+    <div class="col-xs-3 col-sm-4">
         <div class="btn-toolbar" role="toolbar" aria-label="...">
             <a class="btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -56,7 +56,7 @@
 <!--INSIDE-->
 <div class="row">
     <div class="col-xs-12 col-sm-2">
-        <label for="nameInput">Name</label>
+        <label for="nameInput">Name*</label>
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
@@ -101,7 +101,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-2">
-        <label for="domainTypeSelector">Domain Type</label>
+        <label for="domainTypeSelector">Domain Type*</label>
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
@@ -114,7 +114,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-2">
-        <label for="valueTypeList">Value Type</label>
+        <label for="valueTypeList">Value Type*</label>
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
@@ -159,7 +159,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-2">
-        <label for="aggregationOperatorList">Aggregation Operator</label>
+        <label for="aggregationOperatorList">Aggregation Operator*</label>
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
@@ -201,7 +201,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12 col-sm-2">
-        <label for="categoryCombinationList">Category Combination</label>
+        <label for="categoryCombinationList">Category Combination*</label>
     </div>
     <div class="col-xs-12 col-sm-4">
 
@@ -308,11 +308,11 @@
                                valueTypeList,numberType,aggregationOperatorList,storeZeroDataValuesList,
                                urlInput,categoryCombinationList,optionSetForDataValuesList,
                                optionSetForCommentsList,legendSetsList,rationaleInput,unitMeasureInput)"
-        class="btn btn-default">Save</button>
+                class="btn btn-default">Save</button>
     </div>
-    <div class="col-xs-3 col-sm-1">
+<!--    <div class="col-xs-3 col-sm-1">
         <button type="reset" class="btn btn-default">Reset</button>
-    </div>
+    </div>-->
     <div class="col-xs-3 col-xs-offset-3 col-sm-1">
         <div class="pull-right btn-group">
             <button class="btn btn-danger" ng-click="delete(element.id)">Delete</button>
@@ -321,9 +321,7 @@
 
 </div>
 </div>
-
 <!--END INSIDE-->
-
 </accordion-group>
 </accordion>
 </div>
