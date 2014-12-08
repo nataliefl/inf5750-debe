@@ -46,13 +46,13 @@
 </div>
 
 <accordion close-others="true">
-<accordion-group heading="{{element.name}}" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
+<accordion-group heading="element.name" ng-model="currentElement" ng-repeat="element in data.dataElements | filter : search" is-open="currentElement.open" >
 <accordion-heading>
     <a ng-click="getDetails(element.id)">{{element.name}}</a>
 
 </accordion-heading>
 
-<div ng-if="element.open">
+<div ng-if="currentElement.open">
 <!--INSIDE-->
 <div class="row">
     <div class="col-xs-12 col-sm-2">
@@ -60,7 +60,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="nameInput" ng-model="nameInput">
+            <input type="text" class="form-control" id="nameInput" ng-model="{{currentElement.name}}">
         </div>
     </div>
 </div>
@@ -71,7 +71,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="shortNameInput" ng-model="shortNameInput" >
+            <input type="text" class="form-control" id="shortNameInput" ng-model="{{currentElement.shortName}}" >
         </div>
     </div>
 </div>
