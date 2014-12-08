@@ -1,8 +1,8 @@
-//Depedencies listed in array. In addition to angular objects 'ng..' we also add our own modules e.g. 'DataElements'
-//var controllers = angular.module('Controllers', ['ngAnimate', 'DataElements']);
-
-//Controller attached to list.html view
-//NB: Note the order of dependencies and the the consequent identical order of parameters in the function
+/*
+ * List Controller module. 
+ * Fetches data elements with all dependant data items from the server. 
+ * Updates the view.
+ */
 angular.module('app.controllers',['app.services', 'ui.bootstrap']).
     controller('ListController', ['$scope','DataElements', '$location' , '$routeParams', function($scope, DataElements, $location, $routeParams) {
         pageInit();
@@ -18,6 +18,9 @@ angular.module('app.controllers',['app.services', 'ui.bootstrap']).
                 $scope.optionItems=data.optionSets;
             });
 
+      DataElements.retrieveOptions().$promise.then(function(data){
+          $scope.optionItems=data.optionSets;
+      });
 
             DataElements.retrieveLegends().$promise.then(function(data){
                 $scope.legendItems=data.mapLegendSets;
