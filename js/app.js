@@ -1,18 +1,19 @@
-var app = angular.module('myApp', [
-  'app.controllers',
-  'app.services',
-  'ngRoute',
-  ]);
+(function(){
+  var app = angular.module('myApp', [
+    'app.controllers',
+    'app.services',
+    'ngRoute',
+    ]);
 
 
 //Initialize our app, get the manifest
 app.run(['$rootScope', '$http', '$location',function($rootScope, $http, $location){
 
   var xhReq = new XMLHttpRequest();
-    xhReq.open("GET", "manifest.webapp", false);
-    xhReq.send(null);
-    var serverResponse = JSON.parse(xhReq.responseText);
-    $rootScope.baseUrl = serverResponse.activities.dhis.href;
+  xhReq.open("GET", "manifest.webapp", false);
+  xhReq.send(null);
+  var serverResponse = JSON.parse(xhReq.responseText);
+  $rootScope.baseUrl = serverResponse.activities.dhis.href;
 
 }]);
 
@@ -32,3 +33,4 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   otherwise({'redirectTo':'/'});
 
 }]);
+})();

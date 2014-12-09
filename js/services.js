@@ -1,129 +1,130 @@
-/*
- * Talks to the DHIS REST api
- *
- * getJSONP : Fetch JSONP data
- * putJSON : Update data
- * postJSON : Post new data
- *
- * Returns a promise object.
- */
-
- angular.module('app.services', ['ngResource', 'ngRoute']).
- factory('DataElements', ['$rootScope','$resource', function($rootScope, $resource){
- 	return $resource( $rootScope.baseUrl + 'api/:endPointAdr/:id',
- 	{
- 		'endPointAdr': 'dataElements', 
- 		'callback' : 'JSON_CALLBACK'
- 	},
  /*
-  * Talks to the DHIS REST api
+ * Service that fetch dataelements from the DHIS API.
+ *
+ * Returns a $resource object. E.g. usage DataElements.function.$promise.then(function(data){ ... })
+ */
+ (function (){
+     angular.module('app.services', ['ngResource', 'ngRoute']).
+     factory('DataElements', ['$rootScope','$resource', function($rootScope, $resource){
+      return $resource( $rootScope.baseUrl + 'api/:endPointAdr/:id',
+      {
+       'endPointAdr': 'dataElements', 
+       'callback' : 'JSON_CALLBACK'
+   },
+ /*
+  * Retrieve dataelement legends.
   *
-  * retrieveLegends : retrieve Legends of data
-  *
+  * @return $promise. 
+  * E.g. DataElements.retrieveLegends().$promise...
   */
- 	{
-        retrieveLegends:
-        {
+  {
+    retrieveLegends:
+    {
 
-             'method' : 'JSONP',
-             'params' :
-         {
-             'format' : 'jsonp',
-             'endPointAdr' : 'mapLegendSets',
-             'paging' : 'false'
-         }
-        },
+     'method' : 'JSONP',
+     'params' :
+     {
+         'format' : 'jsonp',
+         'endPointAdr' : 'mapLegendSets',
+         'paging' : 'false'
+     }
+ },
  /*
-  * Talks to the DHIS REST api
+  * Retrieve dataelement options.
   *
-  * retrieveOptions : retrieve options of data
+  * @return $promise. 
+  * E.g. DataElements.retrieveOptions().$promise...
+  */
+  retrieveOptions:
+  {
+    'method' : 'JSONP',
+    'params' :
+    {
+        'format' : 'jsonp',
+        'endPointAdr' : 'optionSets',
+        'paging' : 'false'
+    }
+
+},
+ /*
+  * Retrieve dataelement categories.
   *
- */
-        retrieveOptions:
-        {
-            'method' : 'JSONP',
-            'params' :
-            {
-                'format' : 'jsonp',
-                'endPointAdr' : 'optionSets',
-                'paging' : 'false'
-            }
-
-        },
+  * @return $promise. 
+  * E.g. DataElements.retrieveCategories().$promise...
+  */
+  retrieveCategories:
+  {
+     'method' : 'JSONP',
+     'params' :
+     {
+         'format' : 'jsonp',
+         'endPointAdr' : 'categoryCombos',
+         'paging' : 'false'
+     }
+ },
  /*
- * Talks to the DHIS REST api
- *
- * retrieveCategories : retrieve Categories of data
- *
- */
-        retrieveCategories:
-        {
-             'method' : 'JSONP',
-             'params' :
-         {
-             'format' : 'jsonp',
-             'endPointAdr' : 'categoryCombos',
-             'paging' : 'false'
-         }
-        },
+  * Retrieve dataelement details.
+  *
+  * @param {'id':id} Id of dataelement.
+  * @return $promise. 
+  * E.g. DataElements.retrieveDetails({'id':id}).$promise...
+  */
+  retrieveDetails:
+  {
+    'method' : 'JSONP',
+    'params' :
+    {
+        'format' : 'jsonp',
+        'id' : '@id'
+    }
+},
  /*
- * Talks to the DHIS REST api
- *
- * retrieveDetails : retrieve details of data
- *
- */
-        retrieveDetails:
-        {
-            'method' : 'JSONP',
-            'params' :
-            {
-                'format' : 'jsonp',
-                'id' : '@id'
-            }
-        },
+  * Retrieve a page containing multiple elements.
+  *
+  * @param {'page':page} Page number.
+  * @return $promise. 
+  * E.g. DataElements.get({'page':page}).$promise...
+  */
+  get : 
+  {
+    'method' : 'JSONP',  
+    'params' : 
+    {
+     'format' : 'jsonp',
+     'page' : '@page'
+ }
+},
 /*
- * Talks to the DHIS REST api
- *
- * get: Fetch JSONP data
- *
- */
- 		get : 
- 		{
- 			'method' : 'JSONP',  
- 			'params' : 
- 			{
- 				'format' : 'jsonp',
- 				'page' : '@page'
- 			}
- 		},
+  * Delete an element.
+  *
+  * @param {'id':id} Dataelement id.
+  * @return $promise. 
+  * E.g. DataElements.delete({'id':id}).$promise...
+  */
+  delete :
+  {
+    'method' : 'DELETE',
+    'params' : 
+    {
+     'id' : '@id'
+ }
+},
 /*
-* Talks to the DHIS REST api
-*
-* delete : delete data
-*
-*/
-        delete :
- 		{
- 			'method' : 'DELETE',
- 			'params' : 
- 			{
- 				'id' : '@id'
- 			}
- 		},
-/*
-* Talks to the DHIS REST api
- *
- * save : Update data
- *
- */
-        save :
-        {
-            'method' : 'PUT',
-            'params' :
-            {
-                'id' : '@id'
-            }
-        }
+  * Save an element. Properties on dataelement that are not a @param will be transmitted in the message body.
+  *
+  * @param {'id':id} Dataelement id.
+  * @return $promise. 
+  * E.g. DataElements.delete({'id':id}).$promise...
+  */
+  save :
+  {
+    'method' : 'PUT',
+    'params' :
+    {
+        'id' : '@id'
+    }
+}
 
- 	});
- }]);
+});
+}]);
+})();

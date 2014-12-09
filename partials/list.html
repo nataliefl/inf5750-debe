@@ -47,7 +47,7 @@
 </div>
     <!-- accordion  Starts -->
 <accordion close-others="true">
-<accordion-group heading="{{element.name}}" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
+<accordion-group heading="element.name" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
 <!-- dynamic heading for accordions -->
     <accordion-heading>
     <a ng-click="getDetails(element.id)">{{element.name}}</a>
