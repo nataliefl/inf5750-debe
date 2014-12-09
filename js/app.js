@@ -2,7 +2,7 @@
   var app = angular.module('myApp', [
     'app.controllers',
     'app.services',
-    'ngRoute',
+    'ui.router',
     ]);
 
 
@@ -19,18 +19,22 @@ app.run(['$rootScope', '$http', '$location',function($rootScope, $http, $locatio
 
 //Initialize our app configuration
 
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-  $routeProvider.
-  when('/', {
-    templateUrl: 'partials/list.html',
-    controller: 'ListController'//Page should not reload when searching for query parameter i.e. ? page = ...
+  //Default route
+  $urlRouterProvider.otherwise('index');
+
+  $stateProvider.
+  state('index', {
+    url:"/index",
+    templateUrl : 'partials/list.html',
+    controller: "ListController"
   }).
-  when('/details/:id', {
-    templateUrl: 'partials/details.html',
+  state('index.details', {
+    url: "/details/:id",
+    templateUrl : 'partials/details.html',
     controller: 'DetailsController'
-  }).
-  otherwise({'redirectTo':'/'});
+  });
 
 }]);
 })();

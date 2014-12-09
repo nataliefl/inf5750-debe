@@ -1,333 +1,63 @@
 
 <section>
-<div class="container-fluid">
+    <div class="container-fluid">
 
-<div class="row">
-    <div class="col-xs-12">
-        <h1>Data Elements Bulk Editor</h1>
-    </div>
-</div>
-
-<br>
-    <!-- Filtering/searching in each page -->
-<div class="row">
-
-    <div class="col-xs-12 col-sm-4 ">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Type to filter" ng-model="search" autofocus>
-          <span class="input-group-btn">
-            <button class="btn btn-default" ng-click="search = ''" type="button">Clear</button>
-          </span>
+        <!-- HEADER -- >
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Data Elements Bulk Editor</h1>
+            </div>
         </div>
-    </div>
-    </div>
-    <br>
-    <!-- change pages prevPage/nextPage -->
-    <div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <div class="btn-toolbar" role="toolbar" aria-label="...">
-            <a class="  btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-             <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
+        <!-- END OF HEADER -- >
+        <br>
+        <!-- FILTER -->
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-4 ">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Type to filter" ng-model="search" autofocus>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="search = ''" type="button">Clear</button>
+                    </span>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
-<br>
-
-<div class="row">
-    <div class="col-xs-12">
-        <p>
-            Page {{currentPage}} of {{pageCount}}
-        </p>
-    </div>
-</div>
-    <!-- accordion  Starts -->
-<accordion close-others="true">
-<accordion-group heading="element.name" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
-<!-- dynamic heading for accordions -->
-    <accordion-heading>
-    <a ng-click="getDetails(element.id)">{{element.name}}</a>
-</accordion-heading>
-
-<div ng-if="element.open">
-<!--INSIDE-->
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="nameInput">Name</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <input type="text" class="form-control" id="nameInput" ng-model="JsonElement.nameInput">
+        <!-- END OF FILTER -->
+        <br>
+        <!-- PAGE NAVIGATION -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-2">
+                <div class="btn-toolbar" role="toolbar" aria-label="...">
+                    <a class="  btn btn-default" ng-click="prevPage()" aria-label="Previous Page">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="btn btn-default" ng-click="nextPage()" aria-label="Next Page">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        <!-- END OF PAGE NAVIGATION -->
+        <br>
 
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="shortNameInput">Short Name</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <input type="text" class="form-control" id="shortNameInput" ng-model="JsonElement.shortNameInput" >
+        <div class="row">
+            <div class="col-xs-12">
+                <p ng-if="currentPage">
+                    Page {{currentPage}} of {{pageCount}}
+                </p>
+            </div>
         </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="codeInput">Code</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <input type="text" class="form-control" id="codeInput" ng-model="JsonElement.codeInput">
-        </div>
-    </div>
-</div>
-
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="descriptionTextArea">Description</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <textarea rows="3" class="form-control" id="descriptionTextArea" ng-model="JsonElement.descriptionTextArea"></textarea>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="domainTypeSelector">Domain Type</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <select class="form-control"  id="domainTypeSelector" ng-model="JsonElement.domainTypeSelector">
-                <option value="AGGREGATE">Aggregate</option>
-                <option value="TRACKER">Tracker</option>
-            </select>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="valueTypeList">Value Type</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <select class="form-control" id="valueTypeList" ng-model="JsonElement.valueTypeList">
-                <option value="int">Number</option>
-                <option value="string">Text</option>
-                <option value="bool">Yes/No</option>
-                <option value="trueOnly">Yes Only</option>
-                <option value="date">Date</option>
-                <option value="username">User Name</option>
-            </select>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="numberType">Number Type</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <select class="form-control"  id="numberType" ng-model="JsonElement.numberType">
-                <option value="number">Number</option>
-                <option value="int">Integer</option>
-                <option value="posInt">Positive Integer</option>
-                <option value="negInt">Negative Integer</option>
-                <option value="zeroPositiveInt">Positive or Zero Integer</option>
-                <option value="unitInterval">Unit Interval</option>
-                <option value="percentage">Percentage</option>
-                <option value="text">Text</option>
-                <option value="longText">Long text</option>
-                <option value="sum">Sum</option>
-                <option value="average">Average</option>
-                <option value="count">Count</option>
-                <option value="stddev">Standard deviation</option>
-                <option value="variance">Variance</option>
-                <option value="min">Min</option>
-                <option value="max" selected="selected">Max</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="aggregationOperatorList">Aggregation Operator</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <select class="form-control"  id="aggregationOperatorList" ng-model="JsonElement.aggregationOperatorList">
-                <option value="sum">Sum</option>
-                <option value="average">Average</option>
-                <option value="count">Count</option>
-                <option value="stddev">Standard deviation</option>
-                <option value="variance">Variance</option>
-                <option value="min">Min</option>
-                <option value="max" selected="selected">Max</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="storeZeroDataValuesList">Store zero data values</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <select class="form-control"  id="storeZeroDataValuesList" ng-model="JsonElement.storeZeroDataValuesList">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="urlInput">URL</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <input type="url" class="form-control" id="urlInput" ng-model="JsonElement.urlInput">
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="categoryCombinationList">Category Combination</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-
-        <div class="form-group">
-            <select class="form-control" id="categoryCombinationList" ng-model="JsonElement.categoryCombinationList">
-                <option  ng-repeat="item in categoryItems" value="{{::item.name}}">{{item.name}}</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="optionSetForDataValuesList">Option set for data values</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-
-        <div class="form-group">
-            <select class="form-control" id="optionSetForDataValuesList" ng-model="JsonElement.optionSetForDataValuesList">
-                <option  ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="optionSetForCommentsList">Option set for comments</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-
-        <div class="form-group">
-            <select class="form-control" id="optionSetForCommentsList" ng-model="JsonElement.optionSetForCommentsList">
-                <option  ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="legendSetsList">Legend set</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-
-        <div class="form-group">
-            <select class="form-control" id="legendSetsList" ng-model="JsonElement.legendSetsList">
-                <option  ng-repeat="item in legendItems" value="{{::item.name}}">{{item.name}}</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="optionSetForCommentsList">Aggregation level</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-
-        <div class="check-element">
-            <label class="checkbox-inline">
-                <input type="checkbox" id="nationalCheckbox" value="1" ng-model="JsonElement.nationalCheckbox"> National
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="districtCheckbox" value="2" ng-model="JsonElement.districtCheckbox"> District
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="chiefdomCheckbox" value="3" ng-model="JsonElement.chiefdomCheckbox"> Chiefdom
-            </label>
-            <label class="checkbox-inline">
-                <input type="checkbox" id="facilityCheckbox" value="4" ng-model="JsonElement.facilityCheckbox"> Facility
-            </label>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="rationaleInput">Rationale</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <input type="text" class="form-control" id="rationaleInput" ng-model="JsonElement.rationaleInput">
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-2">
-        <label for="unitOfMeasureInput">Unit of measure</label>
-    </div>
-    <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-            <input type="text" class="form-control" id="unitOfMeasureInput" ng-model="JsonElement.unitMeasureInput">
-        </div>
-    </div>
-</div>
-
-<br>
-<!-- save/reset/delete button -->
-<div class="row">
-    <div class="col-xs-3 col-sm-1">
-<!--        <button ng-click="save(nameInput,shortNameInput,codeInput,descriptionTextArea,domainTypeSelector,
-                               valueTypeList,numberType,aggregationOperatorList,storeZeroDataValuesList,
-                               urlInput,categoryCombinationList,optionSetForDataValuesList,
-                               optionSetForCommentsList,legendSetsList,rationaleInput,unitMeasureInput)"
-        class="btn btn-default">Save</button>-->
-        <button ng-click="save(JsonElement)"
-                class="btn btn-default">Save</button>
-    </div>
-    <div class="col-xs-3 col-sm-1">
-        <button type="reset" class="btn btn-default">Reset</button>
-    </div>
-    <div class="col-xs-3 col-xs-offset-3 col-sm-1">
-        <div class="pull-right btn-group">
-            <button class="btn btn-danger" ng-click="delete(element.id)">Delete</button>
-        </div>
-    </div>
-
-</div>
-</div>
-
-<!--END INSIDE-->
-
-</accordion-group>
+        <!-- LIST OF DATAELEMENTS-->
+        <accordion close-others="true">
+            <accordion-group heading="element.name" ng-repeat="element in data.dataElements | filter : search" is-open="element.open" >
+            <accordion-heading>
+            <a ui-sref="index.details({id:'{{element.id}}'})">{{element.name}}</a>
+        </accordion-heading>
+        <!-- DETAILS -->
+        <div ng-if="element.open" ui-view></div> 
+        <!-- END OF DETAILS-->
+    </accordion-group>
+    <!-- END OF LIST OF DATAELEMENTS-->
 </accordion>
 </div>
 </section>
