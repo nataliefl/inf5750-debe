@@ -1,15 +1,16 @@
-/*
+ /*
  * Service that fetch dataelements from the DHIS API.
  *
  * Returns a $resource object. E.g. usage DataElements.function.$promise.then(function(data){ ... })
  */
- angular.module('app.services', ['ngResource', 'ngRoute']).
- factory('DataElements', ['$rootScope','$resource', function($rootScope, $resource){
- 	return $resource( $rootScope.baseUrl + 'api/:endPointAdr/:id',
- 	{
- 		'endPointAdr': 'dataElements', 
- 		'callback' : 'JSON_CALLBACK'
- 	},
+ (function (){
+     angular.module('app.services', ['ngResource', 'ngRoute']).
+     factory('DataElements', ['$rootScope','$resource', function($rootScope, $resource){
+      return $resource( $rootScope.baseUrl + 'api/:endPointAdr/:id',
+      {
+       'endPointAdr': 'dataElements', 
+       'callback' : 'JSON_CALLBACK'
+   },
  /*
   * Retrieve dataelement legends.
   *
@@ -126,3 +127,4 @@
 
 });
 }]);
+})();

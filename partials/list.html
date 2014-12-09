@@ -61,7 +61,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="nameInput" ng-model="nameInput">
+            <input type="text" class="form-control" id="nameInput" ng-model="JsonElement.nameInput">
         </div>
     </div>
 </div>
@@ -72,7 +72,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="shortNameInput" ng-model="shortNameInput" >
+            <input type="text" class="form-control" id="shortNameInput" ng-model="JsonElement.shortNameInput" >
         </div>
     </div>
 </div>
@@ -83,7 +83,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="codeInput" ng-model="codeInput">
+            <input type="text" class="form-control" id="codeInput" ng-model="JsonElement.codeInput">
         </div>
     </div>
 </div>
@@ -95,7 +95,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <textarea rows="3" class="form-control" id="descriptionTextArea" ng-model="descriptionTextArea"></textarea>
+            <textarea rows="3" class="form-control" id="descriptionTextArea" ng-model="JsonElement.descriptionTextArea"></textarea>
         </div>
     </div>
 </div>
@@ -106,21 +106,20 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <select class="form-control"  id="domainTypeSelector" ng-model="domainTypeSelector">
+            <select class="form-control"  id="domainTypeSelector" ng-model="JsonElement.domainTypeSelector">
                 <option value="AGGREGATE">Aggregate</option>
                 <option value="TRACKER">Tracker</option>
             </select>
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="valueTypeList">Value Type</label>
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <select class="form-control" id="valueTypeList" ng-model="valueTypeList">
+            <select class="form-control" id="valueTypeList" ng-model="JsonElement.valueTypeList">
                 <option value="int">Number</option>
                 <option value="string">Text</option>
                 <option value="bool">Yes/No</option>
@@ -131,14 +130,13 @@
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="numberType">Number Type</label>
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <select class="form-control"  id="numberType" ng-model="numberType">
+            <select class="form-control"  id="numberType" ng-model="JsonElement.numberType">
                 <option value="number">Number</option>
                 <option value="int">Integer</option>
                 <option value="posInt">Positive Integer</option>
@@ -166,7 +164,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <select class="form-control"  id="aggregationOperatorList" ng-model="aggregationOperatorList">
+            <select class="form-control"  id="aggregationOperatorList" ng-model="JsonElement.aggregationOperatorList">
                 <option value="sum">Sum</option>
                 <option value="average">Average</option>
                 <option value="count">Count</option>
@@ -185,25 +183,23 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <select class="form-control"  id="storeZeroDataValuesList" ng-model="storeZeroDataValuesList">
+            <select class="form-control"  id="storeZeroDataValuesList" ng-model="JsonElement.storeZeroDataValuesList">
                 <option value="true">Yes</option>
                 <option value="false">No</option>
             </select>
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="urlInput">URL</label>
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <input type="url" class="form-control" id="urlInput" ng-model="urlInput">
+            <input type="url" class="form-control" id="urlInput" ng-model="JsonElement.urlInput">
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-xs-12 col-sm-2">
         <label for="categoryCombinationList">Category Combination</label>
@@ -211,7 +207,7 @@
     <div class="col-xs-12 col-sm-4">
 
         <div class="form-group">
-            <select class="form-control" id="categoryCombinationList" ng-model="categoryCombinationList">
+            <select class="form-control" id="categoryCombinationList" ng-model="JsonElement.categoryCombinationList">
                 <option  ng-repeat="item in categoryItems" value="{{::item.name}}">{{item.name}}</option>
             </select>
         </div>
@@ -223,8 +219,9 @@
         <label for="optionSetForDataValuesList">Option set for data values</label>
     </div>
     <div class="col-xs-12 col-sm-4">
+
         <div class="form-group">
-            <select class="form-control" id="optionSetForDataValuesList" ng-model="optionSetForDataValuesList">
+            <select class="form-control" id="optionSetForDataValuesList" ng-model="JsonElement.optionSetForDataValuesList">
                 <option  ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
             </select>
         </div>
@@ -236,8 +233,9 @@
         <label for="optionSetForCommentsList">Option set for comments</label>
     </div>
     <div class="col-xs-12 col-sm-4">
+
         <div class="form-group">
-            <select class="form-control" id="optionSetForCommentsList" ng-model="optionSetForCommentsList">
+            <select class="form-control" id="optionSetForCommentsList" ng-model="JsonElement.optionSetForCommentsList">
                 <option  ng-repeat="item in optionItems" value="{{::item.name}}">{{item.name}}</option>
             </select>
         </div>
@@ -249,8 +247,9 @@
         <label for="legendSetsList">Legend set</label>
     </div>
     <div class="col-xs-12 col-sm-4">
+
         <div class="form-group">
-            <select class="form-control" id="legendSetsList" ng-model="legendSetsList">
+            <select class="form-control" id="legendSetsList" ng-model="JsonElement.legendSetsList">
                 <option  ng-repeat="item in legendItems" value="{{::item.name}}">{{item.name}}</option>
             </select>
         </div>
@@ -262,18 +261,19 @@
         <label for="optionSetForCommentsList">Aggregation level</label>
     </div>
     <div class="col-xs-12 col-sm-4">
+
         <div class="check-element">
             <label class="checkbox-inline">
-                <input type="checkbox" id="nationalCheckbox" value="1" ng-model="nationalCheckbox"> National
+                <input type="checkbox" id="nationalCheckbox" value="1" ng-model="JsonElement.nationalCheckbox"> National
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="districtCheckbox" value="2" ng-model="districtCheckbox"> District
+                <input type="checkbox" id="districtCheckbox" value="2" ng-model="JsonElement.districtCheckbox"> District
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="chiefdomCheckbox" value="3" ng-model="chiefdomCheckbox"> Chiefdom
+                <input type="checkbox" id="chiefdomCheckbox" value="3" ng-model="JsonElement.chiefdomCheckbox"> Chiefdom
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="facilityCheckbox" value="4" ng-model="facilityCheckbox"> Facility
+                <input type="checkbox" id="facilityCheckbox" value="4" ng-model="JsonElement.facilityCheckbox"> Facility
             </label>
         </div>
     </div>
@@ -285,7 +285,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="rationaleInput" ng-model="rationaleInput">
+            <input type="text" class="form-control" id="rationaleInput" ng-model="JsonElement.rationaleInput">
         </div>
     </div>
 </div>
@@ -296,7 +296,7 @@
     </div>
     <div class="col-xs-12 col-sm-4">
         <div class="form-group">
-            <input type="text" class="form-control" id="unitOfMeasureInput" ng-model="unitMeasureInput">
+            <input type="text" class="form-control" id="unitOfMeasureInput" ng-model="JsonElement.unitMeasureInput">
         </div>
     </div>
 </div>
@@ -305,11 +305,13 @@
 <!-- save/reset/delete button -->
 <div class="row">
     <div class="col-xs-3 col-sm-1">
-        <button ng-click="save(nameInput,shortNameInput,codeInput,descriptionTextArea,domainTypeSelector,
+<!--        <button ng-click="save(nameInput,shortNameInput,codeInput,descriptionTextArea,domainTypeSelector,
                                valueTypeList,numberType,aggregationOperatorList,storeZeroDataValuesList,
                                urlInput,categoryCombinationList,optionSetForDataValuesList,
                                optionSetForCommentsList,legendSetsList,rationaleInput,unitMeasureInput)"
-        class="btn btn-default">Save</button>
+        class="btn btn-default">Save</button>-->
+        <button ng-click="save(JsonElement)"
+                class="btn btn-default">Save</button>
     </div>
     <div class="col-xs-3 col-sm-1">
         <button type="reset" class="btn btn-default">Reset</button>
