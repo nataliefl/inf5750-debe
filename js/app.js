@@ -1,12 +1,11 @@
 (function(){
-  var app = angular.module('myApp', [
-    'app.controllers',
-    'app.services',
-    'ui.router',
-    ]);
 
 
-//Initialize our app, get the manifest
+var app = angular.module('myApp', ['app.controllers','app.services','ui.router']);
+
+/*
+* Donwload the app's manifest. Sets the base URL based on href property of manifest.
+*/
 app.run(['$rootScope', '$http', '$location',function($rootScope, $http, $location){
 
   var xhReq = new XMLHttpRequest();
@@ -15,11 +14,11 @@ app.run(['$rootScope', '$http', '$location',function($rootScope, $http, $locatio
   var serverResponse = JSON.parse(xhReq.responseText);
   $rootScope.baseUrl = serverResponse.activities.dhis.href;
 
-}]);
-
-//Initialize our app configuration
-
-app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+}]).
+/*
+* Setup page routing. The list and details view.
+*/
+config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
   //Default route
   $urlRouterProvider.otherwise('index');

@@ -91,7 +91,8 @@
     'params' : 
     {
      'format' : 'jsonp',
-     'page' : '@page'
+     'page' : '@page',
+     'fields' : 'id,name'
  }
 },
 /*
